@@ -1,0 +1,253 @@
+[
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "af_mode",
+    "firmware_version": "3.0",
+    "menu_path": ["af_mf", "af_mf_settings", "focus_mode_item"],
+    "menu_item_id": "focus_mode_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "focus_mode", "labels": { "en": "Select Focus Mode", "fr": "Sélectionner Mode mise au point" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "You can assign Focus Mode to a custom button (C1/C2) for faster access.", "fr": "Tu peux assigner le mode AF à un bouton custom (C1/C2) pour un accès plus rapide." },
+        "related_menu_path": ["setup", "operation_custom", "custom_key"]
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "af_area",
+    "firmware_version": "3.0",
+    "menu_path": ["af_mf", "af_mf_settings", "focus_area_item"],
+    "menu_item_id": "focus_area_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "focus_area", "labels": { "en": "Select Focus Area", "fr": "Sélectionner Zone mise au point" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Use the joystick to move the focus point when in Spot or Zone mode.", "fr": "Utilise le joystick pour déplacer le point AF en mode Spot ou Zone." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "aperture",
+    "firmware_version": "3.0",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "A"],
+      "dial_id": "front_dial",
+      "labels": { "en": "In A or M mode, turn the front dial to change aperture.", "fr": "En mode A ou M, tourne la molette avant pour changer l'ouverture." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "The aperture value is displayed at the bottom of the screen and in the viewfinder.", "fr": "L'ouverture s'affiche en bas de l'écran et dans le viseur." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "shutter_speed",
+    "firmware_version": "3.0",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "S"],
+      "dial_id": "rear_dial",
+      "labels": { "en": "In S or M mode, turn the rear dial to change shutter speed.", "fr": "En mode S ou M, tourne la molette arrière pour changer la vitesse." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "Values like 250 mean 1/250s. Values with \" (e.g. 2\") mean seconds.", "fr": "Les valeurs comme 250 signifient 1/250s. Les valeurs avec \" (ex: 2\") signifient des secondes." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "iso",
+    "firmware_version": "3.0",
+    "menu_path": ["exposure_color", "exposure_comp_page", "iso_item"],
+    "menu_item_id": "iso_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "iso", "labels": { "en": "Select ISO", "fr": "Sélectionner ISO" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "ISO AUTO lets the camera choose. Set ISO Auto Min. Shutter Speed to control how the camera balances ISO and shutter.", "fr": "ISO AUTO laisse le boîtier choisir. Règle la vitesse min. ISO Auto pour contrôler l'équilibre ISO/vitesse." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "exposure_mode",
+    "firmware_version": "3.0",
+    "menu_path": ["shooting", "shooting_mode", "exposure_mode_item"],
+    "menu_item_id": "exposure_mode_item",
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["P", "A", "S", "M"],
+      "dial_id": "mode_dial",
+      "labels": { "en": "Turn the mode dial on top of the camera.", "fr": "Tourne la molette de mode sur le dessus du boîtier." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "The A6700 has a mode dial on top. Just rotate it to the desired mode letter.", "fr": "L'A6700 a une molette de mode sur le dessus. Tourne-la sur la lettre souhaitée." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "metering",
+    "firmware_version": "3.0",
+    "menu_path": ["shooting", "metering_page", "metering_mode_item"],
+    "menu_item_id": "metering_mode_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "metering_mode", "labels": { "en": "Select Metering Mode", "fr": "Sélectionner Mode de mesure" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": []
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "white_balance",
+    "firmware_version": "3.0",
+    "menu_path": ["exposure_color", "white_balance_page", "white_balance_item"],
+    "menu_item_id": "white_balance_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "white_balance", "labels": { "en": "Select White Balance", "fr": "Sélectionner Balance des blancs" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "In RAW, white balance can be changed in post. AWB is usually fine.", "fr": "En RAW, la balance des blancs peut être modifiée en post. AWB convient dans la plupart des cas." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "drive",
+    "firmware_version": "3.0",
+    "menu_path": ["shooting", "drive_mode_page", "drive_mode_item"],
+    "menu_item_id": "drive_mode_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "drive_mode", "labels": { "en": "Select Drive Mode", "fr": "Sélectionner Mode d'entraînement" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": []
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "stabilization",
+    "firmware_version": "3.0",
+    "menu_path": ["setup", "steadyshot_page", "steadyshot_item"],
+    "menu_item_id": "steadyshot_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "stabilization", "labels": { "en": "Select SteadyShot", "fr": "Sélectionner SteadyShot" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Turn off SteadyShot when using a tripod to avoid micro-vibrations from the IBIS.", "fr": "Désactive le SteadyShot sur trépied pour éviter les micro-vibrations du stabilisateur." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "file_format",
+    "firmware_version": "3.0",
+    "menu_path": ["shooting", "image_quality", "file_format_item"],
+    "menu_item_id": "file_format_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "file_format", "labels": { "en": "Select File Format", "fr": "Sélectionner Format fichier" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "RAW gives maximum flexibility in post-processing. RAW+JPEG gives both.", "fr": "Le RAW offre un maximum de flexibilité en post-traitement. RAW+JPEG donne les deux." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "exposure_compensation",
+    "firmware_version": "3.0",
+    "menu_path": ["exposure_color", "exposure_comp_page", "exposure_comp_item"],
+    "menu_item_id": "exposure_comp_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "exposure_compensation", "labels": { "en": "Select Exposure Comp.", "fr": "Sélectionner Compensation expo." } }
+      ]
+    },
+    "dial_access": {
+      "exposure_modes": ["P", "A", "S"],
+      "dial_id": "rear_dial",
+      "labels": { "en": "In P/A/S mode, turn the rear dial to adjust exposure compensation.", "fr": "En mode P/A/S, tourne la molette arrière pour ajuster la compensation d'exposition." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "+EV brightens, -EV darkens. Use +0.3 to +1.0 for backlit subjects.", "fr": "+EV éclaircit, -EV assombrit. Utilise +0.3 à +1.0 pour les sujets à contre-jour." }
+      }
+    ]
+  },
+  {
+    "body_id": "sony_a6700",
+    "setting_id": "subject_detection",
+    "firmware_version": "3.0",
+    "menu_path": ["af_mf", "af_mf_settings", "subject_detect_item"],
+    "menu_item_id": "subject_detect_item",
+    "quick_access": {
+      "method": "fn_menu",
+      "steps": [
+        { "action": "press", "target": "fn_button", "labels": { "en": "Press Fn", "fr": "Appuyer sur Fn" } },
+        { "action": "navigate", "target": "af_face_detect", "labels": { "en": "Select Face/Eye Detection", "fr": "Sélectionner Détection visage/yeux" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Subject recognition works best with AF-C and Wide focus area.", "fr": "La reconnaissance de sujet fonctionne mieux en AF-C avec zone de mise au point Large." }
+      }
+    ]
+  }
+]

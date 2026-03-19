@@ -1,0 +1,51 @@
+{
+  "id": "sigma_18-50_f2.8_dc_dn_c",
+  "brand_id": "sigma",
+  "mount_id": "sony_e",
+  "name": "Sigma 18-50mm f/2.8 DC DN | Contemporary",
+  "display_name": "Sigma 18-50mm f/2.8",
+  "type": "zoom",
+  "designed_for": "aps-c",
+
+  "spec": {
+    "focal_length": {
+      "type": "zoom",
+      "min_mm": 18,
+      "max_mm": 50
+    },
+    "aperture": {
+      "type": "constant",
+      "max_aperture": 2.8,
+      "min_aperture": 22,
+      "variable_aperture_map": null
+    },
+    "focus": {
+      "min_focus_distance_m": 0.125,
+      "min_focus_distance_at_focal_mm": 18,
+      "min_focus_distance_map": [
+        { "focal_mm": 18, "distance_m": 0.125 },
+        { "focal_mm": 50, "distance_m": 0.30 }
+      ],
+      "autofocus": true,
+      "af_motor": "stepping",
+      "manual_override": true,
+      "internal_focus": true
+    },
+    "stabilization": {
+      "has_ois": false,
+      "ois_stops": null
+    },
+    "optical": {
+      "elements": 13,
+      "groups": 10,
+      "filter_diameter_mm": 55,
+      "max_magnification": 0.33,
+      "angle_of_view_diagonal_deg": { "wide": 76.5, "tele": 31.4 }
+    },
+    "physical": {
+      "weight_g": 290,
+      "length_mm": 74.5,
+      "diameter_mm": 61.6
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sony",
+    "name": "Sony"
+  },
+  {
+    "id": "canon",
+    "name": "Canon"
+  },
+  {
+    "id": "nikon",
+    "name": "Nikon"
+  },
+  {
+    "id": "sigma",
+    "name": "Sigma"
+  },
+  {
+    "id": "tamron",
+    "name": "Tamron"
+  }
+]

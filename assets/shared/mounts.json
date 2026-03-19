@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sony_e",
+    "brand_id": "sony",
+    "name": "Sony E-mount",
+    "covers_sensor_sizes": ["aps-c", "full-frame"]
+  },
+  {
+    "id": "canon_rf",
+    "brand_id": "canon",
+    "name": "Canon RF",
+    "covers_sensor_sizes": ["aps-c", "full-frame"]
+  },
+  {
+    "id": "nikon_z",
+    "brand_id": "nikon",
+    "name": "Nikon Z",
+    "covers_sensor_sizes": ["aps-c", "full-frame"]
+  }
+]
