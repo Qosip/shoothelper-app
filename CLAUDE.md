@@ -37,11 +37,11 @@ Les plus importants pour le code :
 - 19_MENU_NAVIGATION_MAPPER.md → Killer feature
 
 ## Phase actuelle
-Phase 0 : Bootstrap — finalisation du scaffolding
+Phase 2 : Données — JSON data packs + parsing
 
 ## Ce qui est fait
-- ☑ Phase 0 : Bootstrap (en cours de finalisation)
-- ☐ Phase 1 : Moteur (Settings Engine, Dart pur)
+- ☑ Phase 0 : Bootstrap
+- ☑ Phase 1 : Moteur (Settings Engine, Dart pur) — 37 tests passent
 - ☐ Phase 2 : Données (JSON data packs)
 - ☐ Phase 3 : Flow principal UI
 - ☐ Phase 4 : Onboarding & Download
