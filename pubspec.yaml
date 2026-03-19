@@ -1,0 +1,50 @@
+name: shoothelper
+description: Camera settings advisor with menu navigation.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.5.0
+  riverpod_annotation: ^2.3.0
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # Data
+  freezed_annotation: ^2.4.0
+  json_annotation: ^4.9.0
+  shared_preferences: ^2.2.0
+  path_provider: ^2.1.0
+  dio: ^5.4.0
+  connectivity_plus: ^6.0.0
+
+  # UI
+  flutter_hooks: ^0.20.0
+  hooks_riverpod: ^2.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.0
+  freezed: ^2.5.0
+  json_serializable: ^6.8.0
+  riverpod_generator: ^2.4.0
+  mocktail: ^1.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/brands/

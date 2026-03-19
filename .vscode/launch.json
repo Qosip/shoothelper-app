@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ShootHelper (dev)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=ENV=dev"]
+    },
+    {
+      "name": "ShootHelper (prod)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=ENV=prod"]
+    }
+  ]
+}
