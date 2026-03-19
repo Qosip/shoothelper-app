@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "bodies": [
+    {
+      "id": "sony_a6700",
+      "brand_id": "sony",
+      "name": "Sony A6700",
+      "display_name": "Sony α6700",
+      "sensor_size": "aps-c",
+      "mount": "sony_e",
+      "pack_version": "1.0.0",
+      "pack_size_bytes": 52000,
+      "languages": ["fr", "en"],
+      "lenses": [
+        {
+          "id": "sigma_18-50_f2.8_dc_dn_c",
+          "brand_id": "sigma",
+          "name": "Sigma 18-50mm f/2.8 DC DN | C",
+          "display_name": "Sigma 18-50mm f/2.8",
+          "is_kit_lens": false,
+          "popularity_rank": 1
+        }
+      ]
+    }
+  ]
+}

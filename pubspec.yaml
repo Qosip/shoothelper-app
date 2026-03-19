@@ -48,6 +48,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/catalog.json
+    - assets/health.json
     - assets/brands/
     - assets/shared/
     - assets/packs/sony_a6700/
