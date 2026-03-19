@@ -4,6 +4,7 @@ import '../../features/scene_input/presentation/screens/scene_input_screen.dart'
 import '../../features/results/presentation/screens/results_screen.dart';
 import '../../features/results/presentation/screens/setting_detail_screen.dart';
 import '../../features/menu_nav/presentation/screens/menu_navigation_screen.dart';
+import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/onboarding/presentation/screens/welcome_screen.dart';
 import '../../features/onboarding/presentation/screens/body_selection_screen.dart';
 import '../../features/onboarding/presentation/screens/lens_selection_screen.dart';
@@ -34,6 +35,10 @@ GoRouter createRouter(GearProfileSource gearProfile) {
       GoRoute(
         path: '/',
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsScreen(),
       ),
       GoRoute(
         path: '/scene-input',

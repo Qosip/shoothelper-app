@@ -52,7 +52,12 @@ class NavStep {
     required this.labels,
   });
 
-  String label(String lang) => labels[lang] ?? labels['en'] ?? target;
+  /// Resolve label with full fallback chain:
+  /// lang → "en" → first_available → target.
+  String label(String lang) =>
+      labels[lang] ??
+      labels['en'] ??
+      (labels.isNotEmpty ? labels.values.first : target);
 }
 
 class DialAccess {
@@ -66,7 +71,10 @@ class DialAccess {
     required this.labels,
   });
 
-  String label(String lang) => labels[lang] ?? labels['en'] ?? dialId;
+  String label(String lang) =>
+      labels[lang] ??
+      labels['en'] ??
+      (labels.isNotEmpty ? labels.values.first : dialId);
 }
 
 class Tip {
@@ -78,5 +86,8 @@ class Tip {
     this.relatedMenuPath,
   });
 
-  String label(String lang) => labels[lang] ?? labels['en'] ?? '';
+  String label(String lang) =>
+      labels[lang] ??
+      labels['en'] ??
+      (labels.isNotEmpty ? labels.values.first : '');
 }

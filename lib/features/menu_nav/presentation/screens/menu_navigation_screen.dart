@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/errors/failures.dart';
 import '../../../../shared/presentation/providers/gear_providers.dart';
 import '../../../../shared/presentation/providers/scene_providers.dart';
+import '../../../../shared/presentation/widgets/error_display.dart';
 import '../../domain/use_cases/resolve_menu_path.dart';
 
 class MenuNavigationScreen extends ConsumerWidget {
@@ -28,7 +30,10 @@ class MenuNavigationScreen extends ConsumerWidget {
       ),
       body: resultAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Erreur: $e')),
+        error: (e, _) => ErrorDisplay(
+          failure: mapToFailure(e),
+          onAction: () => ref.invalidate(settingsResultProvider),
+        ),
         data: (result) {
           if (result == null) {
             return const Center(child: Text('Aucun résultat'));
@@ -42,7 +47,10 @@ class MenuNavigationScreen extends ConsumerWidget {
           return cacheAsync.when(
             loading: () =>
                 const Center(child: CircularProgressIndicator()),
-            error: (e, _) => Center(child: Text('Erreur: $e')),
+            error: (e, _) => ErrorDisplay(
+          failure: mapToFailure(e),
+          onAction: () => ref.invalidate(settingsResultProvider),
+        ),
             data: (cache) {
               final navPath = cache.getNavPath(settingId);
               const resolver = ResolveMenuPath();

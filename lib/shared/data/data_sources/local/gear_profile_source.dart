@@ -38,6 +38,27 @@ class GearProfileSource {
     await _prefs.setString(_keyActiveLensId, lensId);
   }
 
+  Future<void> addLens(String lensId) async {
+    final ids = [...lensIds];
+    if (!ids.contains(lensId)) {
+      ids.add(lensId);
+      await _prefs.setStringList(_keyLensIds, ids);
+    }
+  }
+
+  Future<void> removeLens(String lensId) async {
+    final ids = [...lensIds]..remove(lensId);
+    await _prefs.setStringList(_keyLensIds, ids);
+    // If active lens was removed, switch to first available
+    if (activeLensId == lensId && ids.isNotEmpty) {
+      await _prefs.setString(_keyActiveLensId, ids.first);
+    }
+  }
+
+  Future<void> setBody(String newBodyId) async {
+    await _prefs.setString(_keyBodyId, newBodyId);
+  }
+
   Future<void> setLanguage(String lang) async {
     await _prefs.setString(_keyLanguage, lang);
   }

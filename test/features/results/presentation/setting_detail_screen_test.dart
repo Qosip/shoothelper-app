@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shoothelper/shared/presentation/providers/scene_providers.dart';
@@ -67,7 +66,7 @@ void main() {
       expect(find.text('Plus précis sur sujet immobile'), findsOneWidget);
     });
 
-    testWidgets('shows "Comment régler ?" button', (tester) async {
+    testWidgets('shows fallback text when no NavPath', (tester) async {
       final result = testResult();
       await tester.pumpWidget(
         testableWidget(
@@ -82,7 +81,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.widgetWithText(FilledButton, 'Comment régler ?'),
+        find.textContaining('pas encore documenté'),
         findsOneWidget,
       );
     });

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/errors/failures.dart';
 import '../../../../shared/domain/entities/settings_result.dart';
+import '../../../../shared/presentation/providers/gear_providers.dart';
 import '../../../../shared/presentation/providers/scene_providers.dart';
+import '../../../../shared/presentation/widgets/error_display.dart';
 
 class SettingDetailScreen extends ConsumerWidget {
   final String settingId;
@@ -23,7 +26,10 @@ class SettingDetailScreen extends ConsumerWidget {
       ),
       body: resultAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Erreur: $e')),
+        error: (e, _) => ErrorDisplay(
+          failure: mapToFailure(e),
+          onAction: () => ref.invalidate(settingsResultProvider),
+        ),
         data: (result) {
           if (result == null) {
             return const Center(child: Text('Aucun résultat'));
@@ -54,15 +60,19 @@ class SettingDetailScreen extends ConsumerWidget {
       };
 }
 
-class _DetailContent extends StatelessWidget {
+class _DetailContent extends ConsumerWidget {
   final SettingRecommendation setting;
   final String settingId;
 
   const _DetailContent({required this.setting, required this.settingId});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final hasNavPath = ref.watch(cameraDataCacheProvider).whenOrNull(
+          data: (cache) => cache.getNavPath(settingId) != null,
+        ) ??
+        false;
 
     return ListView(
       padding: const EdgeInsets.all(16),
@@ -141,13 +151,25 @@ class _DetailContent extends StatelessWidget {
           const SizedBox(height: 24),
         ],
 
-        // Navigate to menu
-        FilledButton.icon(
-          onPressed: () =>
-              context.go('/results/setting/$settingId/menu-nav'),
-          icon: const Icon(Icons.menu_book),
-          label: const Text('Comment régler ?'),
-        ),
+        // Navigate to menu — only if nav path exists
+        if (hasNavPath)
+          FilledButton.icon(
+            onPressed: () =>
+                context.go('/results/setting/$settingId/menu-nav'),
+            icon: const Icon(Icons.menu_book),
+            label: const Text('Comment régler ?'),
+          )
+        else
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              'Le chemin dans les menus n\'est pas encore documenté pour ton boîtier.',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
       ],
     );
   }

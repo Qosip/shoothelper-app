@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/errors/failures.dart';
 import '../../../../shared/domain/entities/settings_result.dart';
 import '../../../../shared/domain/enums/shooting_enums.dart';
 import '../../../../shared/presentation/providers/scene_providers.dart';
 import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/widgets/error_display.dart';
 
 class ResultsScreen extends ConsumerWidget {
   const ResultsScreen({super.key});
@@ -23,7 +25,10 @@ class ResultsScreen extends ConsumerWidget {
       ),
       body: resultAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Erreur: $e')),
+        error: (e, _) => ErrorDisplay(
+          failure: mapToFailure(e),
+          onAction: () => ref.invalidate(settingsResultProvider),
+        ),
         data: (result) {
           if (result == null) {
             return const Center(child: Text('Aucun résultat'));

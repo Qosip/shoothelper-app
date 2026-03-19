@@ -75,7 +75,12 @@ class MenuItem {
     this.icon,
   });
 
-  String label(String lang) => labels[lang] ?? labels['en'] ?? id;
+  /// Resolve label with full fallback chain:
+  /// lang → "en" → first_available → id.
+  String label(String lang) =>
+      labels[lang] ??
+      labels['en'] ??
+      (labels.isNotEmpty ? labels.values.first : id);
 }
 
 enum MenuItemType { tab, page, setting, info }
@@ -91,6 +96,13 @@ class MenuValue {
     required this.shortLabels,
   });
 
-  String label(String lang) => labels[lang] ?? labels['en'] ?? id;
-  String shortLabel(String lang) => shortLabels[lang] ?? shortLabels['en'] ?? id;
+  String label(String lang) =>
+      labels[lang] ??
+      labels['en'] ??
+      (labels.isNotEmpty ? labels.values.first : id);
+
+  String shortLabel(String lang) =>
+      shortLabels[lang] ??
+      shortLabels['en'] ??
+      (shortLabels.isNotEmpty ? shortLabels.values.first : id);
 }
