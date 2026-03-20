@@ -37,7 +37,7 @@ Les plus importants pour le code :
 - 19_MENU_NAVIGATION_MAPPER.md → Killer feature
 
 ## Phase actuelle
-Phase 7 : Tests & Release
+Phase 7 : Tests & Release (done)
 
 ## Ce qui est fait
 - ☑ Phase 0 : Bootstrap
@@ -47,7 +47,7 @@ Phase 7 : Tests & Release
 - ☑ Phase 4 : Onboarding & Download — 133 tests passent
 - ☑ Phase 5 : Error handling & polish — 181 tests passent
 - ☑ Phase 6 : Data entry supplémentaire — 205 tests passent
-- ☐ Phase 7 : Tests & Release
+- ☑ Phase 7 : Tests & Release — 255 tests, 80.2% global / 95% engine coverage
 
 
 Voici les phases à implémenter et suivre :
