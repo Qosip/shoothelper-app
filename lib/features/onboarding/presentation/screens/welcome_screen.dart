@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/theme/app_spacing.dart';
+import '../../../../shared/presentation/theme/app_typography.dart';
 import '../../domain/use_cases/load_catalog.dart';
 import '../providers/onboarding_providers.dart';
 
@@ -9,31 +13,32 @@ class WelcomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              Icon(Icons.camera_alt_outlined,
-                  size: 80, color: theme.colorScheme.primary),
-              const SizedBox(height: 24),
-              Text('ShootHelper',
-                  style: theme.textTheme.headlineLarge
-                      ?.copyWith(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 12),
+              Icon(LucideIcons.camera,
+                  size: 80, color: AppColors.blueOptique),
+              const SizedBox(height: AppSpacing.xl),
+              Text('ShootHelper', style: AppTypography.display),
+              const SizedBox(height: AppSpacing.md),
               Text(
                 'Tes réglages photo optimaux\nen quelques secondes.',
                 textAlign: TextAlign.center,
-                style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant),
+                style: AppTypography.body.copyWith(
+                  color: isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.lightTextSecondary,
+                ),
               ),
               const Spacer(),
-              FilledButton.icon(
+              FilledButton(
                 onPressed: () async {
                   const loader = LoadCatalog();
                   final catalog = await loader();
@@ -42,10 +47,22 @@ class WelcomeScreen extends ConsumerWidget {
                     context.go('/onboarding/body');
                   }
                 },
-                icon: const Icon(Icons.arrow_forward),
-                label: const Text('Commencer'),
+                style: FilledButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 56),
+                  backgroundColor: AppColors.blueOptique,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Commencer',
+                        style: AppTypography.title
+                            .copyWith(color: Colors.white)),
+                    const SizedBox(width: AppSpacing.sm),
+                    const Icon(LucideIcons.arrowRight, size: 20),
+                  ],
+                ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: AppSpacing.xxl),
             ],
           ),
         ),

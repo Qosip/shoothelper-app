@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/theme/app_spacing.dart';
+import '../../../../shared/presentation/theme/app_typography.dart';
 import '../providers/onboarding_providers.dart';
 
 class LanguageScreen extends ConsumerWidget {
@@ -11,55 +15,70 @@ class LanguageScreen extends ConsumerWidget {
     final catalog = ref.watch(catalogProvider);
     final bodyId = ref.watch(selectedBodyIdProvider);
     final selectedLang = ref.watch(selectedLanguageProvider);
-    final theme = Theme.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final body = catalog?.findBody(bodyId ?? '');
     final languages = body?.languages ?? [];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Langue des menus'),
+        title: Text('Langue des menus', style: AppTypography.headline),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(LucideIcons.arrowLeft),
           onPressed: () => context.go('/onboarding/lens'),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.base),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Dans quelle langue sont les menus de ton ${body?.displayName ?? "appareil"} ?',
-              style: theme.textTheme.bodyLarge,
+              style: AppTypography.body.copyWith(
+                color: isDark
+                    ? AppColors.darkTextSecondary
+                    : AppColors.lightTextSecondary,
+              ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: AppSpacing.xl),
             ...languages.map((lang) {
               final isSelected = lang == selectedLang;
-              return Card(
-                color: isSelected
-                    ? theme.colorScheme.primaryContainer
-                    : null,
-                margin: const EdgeInsets.only(bottom: 8),
+              return Container(
+                margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.blueOptique.withValues(alpha: 0.1)
+                      : (isDark
+                          ? AppColors.darkSurface1
+                          : AppColors.lightSurface1),
+                  borderRadius:
+                      BorderRadius.circular(AppSpacing.radiusCard),
+                  border: isSelected
+                      ? Border.all(
+                          color: AppColors.blueOptique, width: 1.5)
+                      : null,
+                ),
                 child: InkWell(
                   onTap: () => ref
                       .read(selectedLanguageProvider.notifier)
                       .state = lang,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      BorderRadius.circular(AppSpacing.radiusCard),
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.base),
                     child: Row(
                       children: [
                         Text(_langFlag(lang),
                             style: const TextStyle(fontSize: 24)),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: AppSpacing.md),
                         Expanded(
                           child: Text(_langName(lang),
-                              style: theme.textTheme.titleMedium),
+                              style: AppTypography.title),
                         ),
                         if (isSelected)
-                          Icon(Icons.check_circle,
-                              color: theme.colorScheme.primary),
+                          Icon(LucideIcons.checkCircle,
+                              size: 20, color: AppColors.blueOptique),
                       ],
                     ),
                   ),
@@ -70,12 +89,17 @@ class LanguageScreen extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.base),
         child: FilledButton(
           onPressed: selectedLang != null
               ? () => context.go('/onboarding/download')
               : null,
-          child: const Text('Suivant'),
+          style: FilledButton.styleFrom(
+            minimumSize: const Size(double.infinity, 52),
+            backgroundColor: AppColors.blueOptique,
+          ),
+          child: Text('Suivant',
+              style: AppTypography.title.copyWith(color: Colors.white)),
         ),
       ),
     );

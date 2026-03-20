@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../shared/presentation/providers/gear_providers.dart';
 import '../../../../shared/presentation/providers/scene_providers.dart';
+import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/theme/app_spacing.dart';
+import '../../../../shared/presentation/theme/app_typography.dart';
 import '../../../../shared/presentation/widgets/error_display.dart';
+import '../../../../shared/presentation/widgets/nav_step_card.dart';
 import '../../domain/use_cases/resolve_menu_path.dart';
 
 class MenuNavigationScreen extends ConsumerWidget {
@@ -21,11 +26,10 @@ class MenuNavigationScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comment régler'),
+        title: Text('Comment régler', style: AppTypography.headline),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () =>
-              context.go('/results/setting/$settingId'),
+          icon: const Icon(LucideIcons.arrowLeft),
+          onPressed: () => context.go('/results/setting/$settingId'),
         ),
       ),
       body: resultAsync.when(
@@ -48,9 +52,9 @@ class MenuNavigationScreen extends ConsumerWidget {
             loading: () =>
                 const Center(child: CircularProgressIndicator()),
             error: (e, _) => ErrorDisplay(
-          failure: mapToFailure(e),
-          onAction: () => ref.invalidate(settingsResultProvider),
-        ),
+              failure: mapToFailure(e),
+              onAction: () => ref.invalidate(settingsResultProvider),
+            ),
             data: (cache) {
               final navPath = cache.getNavPath(settingId);
               const resolver = ResolveMenuPath();
@@ -66,7 +70,7 @@ class MenuNavigationScreen extends ConsumerWidget {
               if (display == null) {
                 return const Center(
                   child: Padding(
-                    padding: EdgeInsets.all(32),
+                    padding: EdgeInsets.all(AppSpacing.xxl),
                     child: Text(
                       'Chemin de menu non disponible pour ce réglage.',
                       textAlign: TextAlign.center,
@@ -91,133 +95,137 @@ class _MenuNavContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.base),
       children: [
         // Header
-        Text(display.header,
-            style: theme.textTheme.titleLarge
-                ?.copyWith(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 4),
-        Text(display.subheader,
-            style: theme.textTheme.bodySmall
-                ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-        const SizedBox(height: 24),
+        Text(display.header, style: AppTypography.title),
+        const SizedBox(height: AppSpacing.xs),
+        Text(
+          display.subheader,
+          style: AppTypography.caption.copyWith(
+            color: isDark
+                ? AppColors.darkTextSecondary
+                : AppColors.lightTextSecondary,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.xl),
 
-        // Dial access (highest priority)
+        // Dial access
         if (display.dialSection != null) ...[
           _SectionCard(
-            icon: Icons.radio_button_checked,
+            icon: LucideIcons.disc,
             title: display.dialSection!.title,
+            isDark: isDark,
             child: Text(display.dialSection!.instruction,
-                style: theme.textTheme.bodyMedium),
+                style: AppTypography.body),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.md),
         ],
 
         // Quick access (Fn menu)
         if (display.quickAccessSection != null) ...[
           _SectionCard(
-            icon: Icons.flash_on,
+            icon: LucideIcons.zap,
             title: display.quickAccessSection!.title,
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: display.quickAccessSection!.steps
                   .asMap()
                   .entries
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _StepBadge(number: e.key + 1),
-                            const SizedBox(width: 8),
-                            Expanded(
-                                child: Text(e.value,
-                                    style: theme.textTheme.bodyMedium)),
-                          ],
-                        ),
+                  .map((e) => NavStepCard(
+                        stepNumber: e.key + 1,
+                        text: e.value,
+                        isLast: e.key ==
+                            display.quickAccessSection!.steps.length - 1,
                       ))
                   .toList(),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.md),
         ],
 
-        // Full menu path
+        // Full menu path — timeline
         if (display.fullMenuSection != null) ...[
           _SectionCard(
-            icon: Icons.menu,
+            icon: LucideIcons.menu,
             title: display.fullMenuSection!.title,
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // "Press MENU" step
-                Row(
-                  children: [
-                    _StepBadge(number: 0),
-                    const SizedBox(width: 8),
-                    Text(display.fullMenuSection!.pressMenuLabel,
-                        style: theme.textTheme.bodyMedium
-                            ?.copyWith(fontWeight: FontWeight.w600)),
-                  ],
+                NavStepCard(
+                  stepNumber: 0,
+                  text: display.fullMenuSection!.pressMenuLabel,
                 ),
-                const SizedBox(height: 8),
-                // Breadcrumb steps
-                ...display.fullMenuSection!.steps.map((step) => Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _StepBadge(number: step.stepNumber),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(step.label,
-                                style: theme.textTheme.bodyMedium),
-                          ),
-                        ],
-                      ),
+                ...display.fullMenuSection!.steps.map((step) =>
+                    NavStepCard(
+                      stepNumber: step.stepNumber,
+                      text: step.label,
+                      isLast: step.stepNumber ==
+                          display.fullMenuSection!.steps.last.stepNumber,
                     )),
               ],
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.md),
+        ],
+
+        // Breadcrumb in mono
+        if (display.fullMenuSection != null) ...[
+          Container(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.darkSurface2 : AppColors.lightSurface2,
+              borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
+            ),
+            child: Text(
+              display.fullMenuSection!.steps
+                  .map((s) => s.label)
+                  .join(' > '),
+              style: AppTypography.mono.copyWith(
+                color: AppColors.blueOptique,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
         ],
 
         // Tips
         if (display.tips.isNotEmpty) ...[
-          Text('Conseils', style: theme.textTheme.titleSmall),
-          const SizedBox(height: 8),
-          ...display.tips.map((tip) => Card(
-                color: theme.colorScheme.tertiaryContainer,
-                margin: const EdgeInsets.only(bottom: 8),
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.lightbulb_outline,
-                          size: 18,
-                          color: theme.colorScheme.onTertiaryContainer),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(tip.text,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                                color:
-                                    theme.colorScheme.onTertiaryContainer)),
-                      ),
-                    ],
-                  ),
+          Text('CONSEILS', style: AppTypography.overline),
+          const SizedBox(height: AppSpacing.sm),
+          ...display.tips.map((tip) => Container(
+                margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+                padding: const EdgeInsets.all(AppSpacing.md),
+                decoration: BoxDecoration(
+                  color: AppColors.blueOptique10,
+                  borderRadius:
+                      BorderRadius.circular(AppSpacing.radiusCard),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(LucideIcons.lightbulb,
+                        size: 16, color: AppColors.blueOptique),
+                    const SizedBox(width: AppSpacing.sm),
+                    Expanded(
+                      child: Text(tip.text,
+                          style: AppTypography.caption
+                              .copyWith(color: AppColors.blueOptique)),
+                    ),
+                  ],
                 ),
               )),
         ],
 
-        const SizedBox(height: 24),
+        const SizedBox(height: AppSpacing.xl),
 
         // Copy button
-        OutlinedButton.icon(
+        OutlinedButton(
           onPressed: () {
             final text = _buildCopyText(display);
             Clipboard.setData(ClipboardData(text: text));
@@ -225,8 +233,14 @@ class _MenuNavContent extends StatelessWidget {
               const SnackBar(content: Text('Copié dans le presse-papier')),
             );
           },
-          icon: const Icon(Icons.copy),
-          label: const Text('Copier les instructions'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(LucideIcons.copy, size: 18),
+              const SizedBox(width: AppSpacing.sm),
+              const Text('Copier les instructions'),
+            ],
+          ),
         ),
       ],
     );
@@ -264,63 +278,38 @@ class _SectionCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final Widget child;
+  final bool isDark;
 
   const _SectionCard({
     required this.icon,
     required this.title,
     required this.child,
+    required this.isDark,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(icon, size: 20, color: theme.colorScheme.primary),
-                const SizedBox(width: 8),
-                Text(title,
-                    style: theme.textTheme.titleSmall
-                        ?.copyWith(color: theme.colorScheme.primary)),
-              ],
-            ),
-            const SizedBox(height: 12),
-            child,
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _StepBadge extends StatelessWidget {
-  final int number;
-
-  const _StepBadge({required this.number});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
-      width: 24,
-      height: 24,
+      padding: const EdgeInsets.all(AppSpacing.cardPadding),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primary,
-        shape: BoxShape.circle,
+        color: isDark ? AppColors.darkSurface1 : AppColors.lightSurface1,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
       ),
-      alignment: Alignment.center,
-      child: Text(
-        '$number',
-        style: TextStyle(
-          color: theme.colorScheme.onPrimary,
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, size: 18, color: AppColors.blueOptique),
+              const SizedBox(width: AppSpacing.sm),
+              Text(title,
+                  style: AppTypography.title
+                      .copyWith(color: AppColors.blueOptique)),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.md),
+          child,
+        ],
       ),
     );
   }

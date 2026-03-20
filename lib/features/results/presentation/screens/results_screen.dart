@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../shared/domain/entities/settings_result.dart';
 import '../../../../shared/domain/enums/shooting_enums.dart';
 import '../../../../shared/presentation/providers/scene_providers.dart';
-import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/theme/app_spacing.dart';
+import '../../../../shared/presentation/theme/app_typography.dart';
+import '../../../../shared/presentation/widgets/compromise_banner.dart'
+    as banner;
+import '../../../../shared/presentation/widgets/confidence_badge.dart';
 import '../../../../shared/presentation/widgets/error_display.dart';
+import '../../../../shared/presentation/widgets/setting_card.dart';
+import '../../../../shared/presentation/widgets/summary_header.dart';
 
 class ResultsScreen extends ConsumerWidget {
   const ResultsScreen({super.key});
@@ -17,9 +24,9 @@ class ResultsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Résultats'),
+        title: Text('Résultats', style: AppTypography.headline),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(LucideIcons.arrowLeft),
           onPressed: () => context.go('/scene-input'),
         ),
       ),
@@ -47,235 +54,67 @@ class _ResultsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return ListView(
-      padding: const EdgeInsets.all(16),
-      children: [
-        // Scene summary + confidence
-        _ConfidenceBanner(
-          sceneSummary: result.sceneSummary,
-          confidence: result.confidence,
-        ),
-        const SizedBox(height: 16),
-
-        // Exposure summary card (4 main values)
-        _ExposureSummaryCard(result: result),
-        const SizedBox(height: 16),
-
-        // Compromises
-        if (result.compromises.isNotEmpty) ...[
-          ...result.compromises.map((c) => _CompromiseCard(compromise: c)),
-          const SizedBox(height: 16),
-        ],
-
-        // All settings list
-        Text('Tous les réglages',
-            style: theme.textTheme.titleMedium),
-        const SizedBox(height: 8),
-        ...result.settings.map((s) => _SettingRow(setting: s)),
-      ],
-    );
-  }
-}
-
-class _ConfidenceBanner extends StatelessWidget {
-  final String sceneSummary;
-  final Confidence confidence;
-
-  const _ConfidenceBanner({
-    required this.sceneSummary,
-    required this.confidence,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = switch (confidence) {
-      Confidence.high => AppColors.confidenceHigh,
-      Confidence.medium => AppColors.confidenceMedium,
-      Confidence.low => AppColors.confidenceLow,
-    };
-    final label = switch (confidence) {
-      Confidence.high => 'Confiance haute',
-      Confidence.medium => 'Confiance moyenne',
-      Confidence.low => 'Confiance basse',
-    };
-
-    return Card(
-      color: color.withAlpha(25),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          children: [
-            Icon(Icons.circle, color: color, size: 12),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(sceneSummary,
-                      style: Theme.of(context).textTheme.bodyMedium),
-                  Text(label,
-                      style: TextStyle(
-                          color: color, fontWeight: FontWeight.w600)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ExposureSummaryCard extends StatelessWidget {
-  final SettingsResult result;
-
-  const _ExposureSummaryCard({required this.result});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     String val(String id) =>
         result.findSetting(id)?.valueDisplay ?? '-';
 
-    return Card(
-      color: theme.colorScheme.primaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _ExposureValue(label: 'Ouverture', value: val('aperture')),
-            _ExposureValue(label: 'Vitesse', value: val('shutter_speed')),
-            _ExposureValue(label: 'ISO', value: val('iso')),
-            _ExposureValue(label: 'Mode', value: val('exposure_mode')),
-          ],
-        ),
-      ),
-    );
-  }
-}
+    final confidenceLevel = switch (result.confidence) {
+      Confidence.high => ConfidenceLevel.high,
+      Confidence.medium => ConfidenceLevel.medium,
+      Confidence.low => ConfidenceLevel.low,
+    };
 
-class _ExposureValue extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _ExposureValue({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
+    return ListView(
+      padding: const EdgeInsets.all(AppSpacing.base),
       children: [
-        Text(value,
-            style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onPrimaryContainer)),
-        const SizedBox(height: 4),
-        Text(label,
-            style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.onPrimaryContainer.withAlpha(180))),
+        // Exposure summary with gradient + confidence badge
+        SummaryHeader(
+          aperture: val('aperture'),
+          shutterSpeed: val('shutter_speed'),
+          iso: val('iso'),
+          exposureMode: val('exposure_mode'),
+          confidence: confidenceLevel,
+        ),
+        const SizedBox(height: AppSpacing.base),
+
+        // Compromises
+        if (result.compromises.isNotEmpty) ...[
+          ...result.compromises.map((c) {
+            final severity = switch (c.severity) {
+              CompromiseSeverity.critical =>
+                banner.CompromiseSeverity.critical,
+              CompromiseSeverity.warning =>
+                banner.CompromiseSeverity.warning,
+              CompromiseSeverity.info => banner.CompromiseSeverity.warning,
+            };
+            return Padding(
+              padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+              child: banner.CompromiseBanner(
+                text: c.message,
+                severity: severity,
+              ),
+            );
+          }),
+          const SizedBox(height: AppSpacing.sm),
+        ],
+
+        // Settings list
+        Text('TOUS LES RÉGLAGES', style: AppTypography.overline),
+        const SizedBox(height: AppSpacing.md),
+        ...result.settings.map((s) => Padding(
+              padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+              child: SettingCard(
+                settingName: _settingName(s.settingId),
+                explanation: s.explanationShort,
+                valueDisplay: s.valueDisplay,
+                icon: SettingCard.iconForSetting(s.settingId),
+                variant: s.isCompromised
+                    ? SettingCardVariant.compromised
+                    : SettingCardVariant.normal,
+                onTap: () =>
+                    context.go('/results/setting/${s.settingId}'),
+              ),
+            )),
       ],
-    );
-  }
-}
-
-class _CompromiseCard extends StatelessWidget {
-  final Compromise compromise;
-
-  const _CompromiseCard({required this.compromise});
-
-  @override
-  Widget build(BuildContext context) {
-    final color = switch (compromise.severity) {
-      CompromiseSeverity.critical => AppColors.compromiseCritical,
-      CompromiseSeverity.warning => AppColors.compromiseWarning,
-      CompromiseSeverity.info => AppColors.compromiseInfo,
-    };
-    final icon = switch (compromise.severity) {
-      CompromiseSeverity.critical => Icons.error,
-      CompromiseSeverity.warning => Icons.warning_amber,
-      CompromiseSeverity.info => Icons.info_outline,
-    };
-
-    return Card(
-      color: color.withAlpha(20),
-      margin: const EdgeInsets.only(bottom: 8),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, color: color, size: 20),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(compromise.message,
-                      style: Theme.of(context).textTheme.bodySmall),
-                  if (compromise.suggestion.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4),
-                      child: Text(compromise.suggestion,
-                          style: TextStyle(
-                              color: color,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500)),
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SettingRow extends StatelessWidget {
-  final SettingRecommendation setting;
-
-  const _SettingRow({required this.setting});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Card(
-      margin: const EdgeInsets.only(bottom: 8),
-      child: InkWell(
-        onTap: () =>
-            context.go('/results/setting/${setting.settingId}'),
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(_settingName(setting.settingId),
-                        style: theme.textTheme.bodyMedium
-                            ?.copyWith(fontWeight: FontWeight.w600)),
-                    const SizedBox(height: 2),
-                    Text(setting.explanationShort,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurfaceVariant)),
-                  ],
-                ),
-              ),
-              Text(setting.valueDisplay,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: theme.colorScheme.primary)),
-              const SizedBox(width: 4),
-              const Icon(Icons.chevron_right, size: 20),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../shared/presentation/providers/gear_profile_provider.dart';
+import '../../../../shared/presentation/theme/app_colors.dart';
+import '../../../../shared/presentation/theme/app_spacing.dart';
+import '../../../../shared/presentation/theme/app_typography.dart';
 import '../providers/onboarding_providers.dart';
 
 class DownloadScreen extends ConsumerWidget {
@@ -16,7 +20,7 @@ class DownloadScreen extends ConsumerWidget {
     final progress = ref.watch(downloadProgressProvider);
     final status = ref.watch(downloadStatusProvider);
     final error = ref.watch(downloadErrorProvider);
-    final theme = Theme.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final body = catalog?.findBody(bodyId ?? '');
     final lensNames = body?.lenses
@@ -27,88 +31,116 @@ class DownloadScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Récapitulatif'),
+        title: Text('Récapitulatif', style: AppTypography.headline),
         leading: status != DownloadStatus.downloading
             ? IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(LucideIcons.arrowLeft),
                 onPressed: () => context.go('/onboarding/language'),
               )
             : null,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.base),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Recap
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _RecapRow(
-                        label: 'Boîtier',
-                        value: body?.displayName ?? '-'),
-                    const SizedBox(height: 8),
-                    _RecapRow(
-                        label: 'Objectif(s)',
-                        value: lensNames.isEmpty
-                            ? '-'
-                            : lensNames.join(', ')),
-                    const SizedBox(height: 8),
-                    _RecapRow(
-                        label: 'Langue menus',
-                        value: _langName(selectedLang ?? '')),
-                  ],
-                ),
+            // Recap card
+            Container(
+              padding: const EdgeInsets.all(AppSpacing.base),
+              decoration: BoxDecoration(
+                color: isDark
+                    ? AppColors.darkSurface1
+                    : AppColors.lightSurface1,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
+              ),
+              child: Column(
+                children: [
+                  _RecapRow(
+                    icon: LucideIcons.camera,
+                    label: 'Boîtier',
+                    value: body?.displayName ?? '-',
+                    isDark: isDark,
+                  ),
+                  const SizedBox(height: AppSpacing.md),
+                  _RecapRow(
+                    icon: LucideIcons.aperture,
+                    label: 'Objectif(s)',
+                    value: lensNames.isEmpty
+                        ? '-'
+                        : lensNames.join(', '),
+                    isDark: isDark,
+                  ),
+                  const SizedBox(height: AppSpacing.md),
+                  _RecapRow(
+                    icon: LucideIcons.globe,
+                    label: 'Langue menus',
+                    value: _langName(selectedLang ?? ''),
+                    isDark: isDark,
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: AppSpacing.xl),
 
-            // Download section
+            // Download status
             if (status == DownloadStatus.idle) ...[
               Text(
                 'Prêt à télécharger les données pour ton ${body?.displayName ?? "appareil"}.',
-                style: theme.textTheme.bodyMedium,
+                style: AppTypography.body,
               ),
               if (body != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: 4),
+                  padding: const EdgeInsets.only(top: AppSpacing.xs),
                   child: Text(
                     '~${(body.packSizeBytes / 1024).round()} Ko',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant),
+                    style: AppTypography.caption.copyWith(
+                      color: isDark
+                          ? AppColors.darkTextSecondary
+                          : AppColors.lightTextSecondary,
+                    ),
                   ),
                 ),
             ],
 
             if (status == DownloadStatus.downloading) ...[
-              Text('Téléchargement en cours...',
-                  style: theme.textTheme.bodyMedium),
-              const SizedBox(height: 12),
-              LinearProgressIndicator(
-                value: progress.total > 0
-                    ? progress.current / progress.total
-                    : null,
+              Text('Téléchargement en cours...', style: AppTypography.body),
+              const SizedBox(height: AppSpacing.md),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppSpacing.radiusButton),
+                child: LinearProgressIndicator(
+                  value: progress.total > 0
+                      ? progress.current / progress.total
+                      : null,
+                  minHeight: 8,
+                  backgroundColor: isDark
+                      ? AppColors.darkSurface2
+                      : AppColors.lightSurface2,
+                  color: AppColors.blueOptique,
+                ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 '${progress.current}/${progress.total} fichiers',
-                style: theme.textTheme.bodySmall,
+                style: AppTypography.caption.copyWith(
+                  color: isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.lightTextSecondary,
+                ),
               ),
             ],
 
             if (status == DownloadStatus.complete) ...[
               Row(
                 children: [
-                  Icon(Icons.check_circle,
-                      color: theme.colorScheme.primary),
-                  const SizedBox(width: 8),
-                  Text('Téléchargement terminé !',
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.w600)),
+                  Icon(LucideIcons.checkCircle,
+                      size: 24, color: AppColors.success),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text(
+                    'Téléchargement terminé !',
+                    style: AppTypography.title.copyWith(
+                      color: AppColors.success,
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -116,13 +148,15 @@ class DownloadScreen extends ConsumerWidget {
             if (status == DownloadStatus.error) ...[
               Row(
                 children: [
-                  Icon(Icons.error, color: theme.colorScheme.error),
-                  const SizedBox(width: 8),
+                  Icon(LucideIcons.alertCircle,
+                      size: 24, color: AppColors.critical),
+                  const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Text(
                       error ?? 'Erreur lors du téléchargement',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: theme.colorScheme.error),
+                      style: AppTypography.body.copyWith(
+                        color: AppColors.critical,
+                      ),
                     ),
                   ),
                 ],
@@ -134,31 +168,69 @@ class DownloadScreen extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.base),
         child: switch (status) {
-          DownloadStatus.idle => FilledButton.icon(
+          DownloadStatus.idle => FilledButton(
               onPressed: () => _startDownload(ref),
-              icon: const Icon(Icons.download),
-              label: const Text('Télécharger'),
-            ),
-          DownloadStatus.downloading => const FilledButton(
-              onPressed: null,
-              child: SizedBox(
-                height: 20,
-                width: 20,
-                child:
-                    CircularProgressIndicator(strokeWidth: 2),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 52),
+                backgroundColor: AppColors.blueOptique,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(LucideIcons.download, size: 20),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text('Télécharger',
+                      style: AppTypography.title
+                          .copyWith(color: Colors.white)),
+                ],
               ),
             ),
-          DownloadStatus.complete => FilledButton.icon(
-              onPressed: () => context.go('/'),
-              icon: const Icon(Icons.arrow_forward),
-              label: const Text('C\'est parti !'),
+          DownloadStatus.downloading => FilledButton(
+              onPressed: null,
+              style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 52),
+              ),
+              child: const SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
             ),
-          DownloadStatus.error => FilledButton.icon(
+          DownloadStatus.complete => FilledButton(
+              onPressed: () => context.go('/'),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 52),
+                backgroundColor: AppColors.blueOptique,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('C\'est parti !',
+                      style: AppTypography.title
+                          .copyWith(color: Colors.white)),
+                  const SizedBox(width: AppSpacing.sm),
+                  const Icon(LucideIcons.arrowRight, size: 20),
+                ],
+              ),
+            ),
+          DownloadStatus.error => FilledButton(
               onPressed: () => _startDownload(ref),
-              icon: const Icon(Icons.refresh),
-              label: const Text('Réessayer'),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 52),
+                backgroundColor: AppColors.blueOptique,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(LucideIcons.refreshCw, size: 20),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text('Réessayer',
+                      style: AppTypography.title
+                          .copyWith(color: Colors.white)),
+                ],
+              ),
             ),
         },
       ),
@@ -171,7 +243,6 @@ class DownloadScreen extends ConsumerWidget {
     ref.read(downloadErrorProvider.notifier).state = null;
 
     try {
-      // MVP: data is bundled in assets, so we just save the gear profile.
       ref.read(downloadProgressProvider.notifier).state =
           (current: 0, total: 1);
 
@@ -211,27 +282,39 @@ class DownloadScreen extends ConsumerWidget {
 }
 
 class _RecapRow extends StatelessWidget {
+  final IconData icon;
   final String label;
   final String value;
+  final bool isDark;
 
-  const _RecapRow({required this.label, required this.value});
+  const _RecapRow({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.isDark,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Icon(icon, size: 18, color: AppColors.blueOptique),
+        const SizedBox(width: AppSpacing.md),
         SizedBox(
-          width: 120,
-          child: Text(label,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant)),
+          width: 100,
+          child: Text(
+            label,
+            style: AppTypography.caption.copyWith(
+              color: isDark
+                  ? AppColors.darkTextSecondary
+                  : AppColors.lightTextSecondary,
+            ),
+          ),
         ),
         Expanded(
           child: Text(value,
-              style: theme.textTheme.bodyMedium
-                  ?.copyWith(fontWeight: FontWeight.w600)),
+              style: AppTypography.body
+                  .copyWith(fontWeight: FontWeight.w600)),
         ),
       ],
     );

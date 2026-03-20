@@ -25,7 +25,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('ShootHelper'), findsOneWidget);
-      expect(find.text('Sony A6700'), findsOneWidget);
+      // GearBadge shows displayName
+      expect(find.text('Sony α6700'), findsOneWidget);
       expect(find.text('Sigma 18-50mm f/2.8'), findsOneWidget);
       expect(find.text('Nouveau shoot'), findsOneWidget);
     });

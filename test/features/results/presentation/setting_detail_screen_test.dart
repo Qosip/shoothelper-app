@@ -40,7 +40,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Pourquoi ce réglage ?'), findsOneWidget);
+      expect(find.text('POURQUOI CE RÉGLAGE'), findsOneWidget);
       expect(
         find.textContaining('AF-C maintient la mise au point'),
         findsOneWidget,
@@ -61,7 +61,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Alternatives'), findsOneWidget);
+      expect(find.text('ALTERNATIVES'), findsOneWidget);
       expect(find.text('AF-S'), findsOneWidget);
       expect(find.text('Plus précis sur sujet immobile'), findsOneWidget);
     });

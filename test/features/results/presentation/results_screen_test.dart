@@ -80,7 +80,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Portrait en extérieur jour, bokeh'), findsOneWidget);
+      // SummaryHeader shows confidence badge
       expect(find.text('Confiance haute'), findsOneWidget);
     });
 
@@ -115,7 +115,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Tous les réglages'), findsOneWidget);
+      expect(find.text('TOUS LES RÉGLAGES'), findsOneWidget);
       // "Ouverture" appears in both the ExposureSummaryCard and SettingRow
       expect(find.text('Ouverture'), findsWidgets);
       expect(find.text('Vitesse'), findsWidgets);

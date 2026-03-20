@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shoothelper/features/onboarding/presentation/screens/welcome_screen.dart';
 
 import '../../../helpers/test_helpers.dart';
@@ -34,7 +34,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.byIcon(Icons.camera_alt_outlined), findsOneWidget);
+      expect(find.byIcon(LucideIcons.camera), findsOneWidget);
     });
   });
 }
