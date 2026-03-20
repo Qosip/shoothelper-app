@@ -71,16 +71,32 @@ class ContextBuilder {
       case Subject.landscape:
       case Subject.architecture:
       case Subject.astro:
+      case Subject.realEstate:
+      case Subject.aurora:
+      case Subject.nightCityscape:
+      case Subject.droneAerial:
         return minF;
       case Subject.portrait:
+      case Subject.selfPortrait:
+      case Subject.wedding:
         return min(maxF, (85 / 1.5).round()); // ~85mm eq / crop
       case Subject.street:
+      case Subject.event:
         return min(max(minF, (35 / 1.5).round()), maxF); // ~35mm eq
       case Subject.macro:
       case Subject.sport:
       case Subject.wildlife:
+      case Subject.concert:
         return maxF;
       case Subject.product:
+      case Subject.food:
+        return mid;
+      case Subject.lightning:
+      case Subject.fireworks:
+      case Subject.starTrails:
+        return minF; // wide for sky
+      case Subject.underwater:
+      case Subject.pet:
         return mid;
     }
   }
@@ -126,6 +142,20 @@ class ContextBuilder {
         return 7.5;
       case LightCondition.led:
         return 8.5;
+      case LightCondition.mixedLighting:
+        return 9; // interior with window
+      case LightCondition.backlit:
+        return 14; // bright behind subject
+      case LightCondition.harshMidday:
+        return 16; // hard midday sun
+      case LightCondition.diffused:
+        return 13.5; // thin clouds
+      case LightCondition.candlelight:
+        return 4; // very dim, warm
+      case LightCondition.stageLighting:
+        return 7; // colored spots
+      case LightCondition.moonlight:
+        return -1; // ~EV -2 to 0
     }
   }
 
@@ -198,19 +228,46 @@ class ContextBuilder {
     FStop aperture,
   ) {
     // Special cases by subject
-    if (scene.subject == Subject.astro) {
+    if (scene.subject == Subject.astro || scene.subject == Subject.aurora) {
       return _astro.maxExposureTime(
         aperture: aperture,
         sensor: body.sensor,
         focalMm: focalMm,
       );
     }
+    if (scene.subject == Subject.starTrails) {
+      return const ShutterSpeed(30); // BULB / long exposure stacking
+    }
+    if (scene.subject == Subject.fireworks) {
+      return const ShutterSpeed(4); // ~2-4s typical
+    }
+    if (scene.subject == Subject.lightning) {
+      return const ShutterSpeed(15); // long exposure to catch bolt
+    }
+    if (scene.subject == Subject.nightCityscape) {
+      return const ShutterSpeed(30); // tripod long exposure
+    }
     if (scene.subject == Subject.macro &&
         (scene.support == null || scene.support == Support.handheld)) {
       return ShutterSpeed.fraction(250);
     }
-    if (scene.subject == Subject.sport && scene.subjectMotion == null) {
+    if (scene.subject == Subject.food) {
+      return ShutterSpeed.fraction(125);
+    }
+    if ((scene.subject == Subject.sport ||
+            scene.subject == Subject.concert) &&
+        scene.subjectMotion == null) {
       return ShutterSpeed.fraction(500);
+    }
+    if (scene.subject == Subject.pet && scene.subjectMotion == null) {
+      return ShutterSpeed.fraction(250); // unpredictable movement
+    }
+    if (scene.subject == Subject.wedding ||
+        scene.subject == Subject.event) {
+      return ShutterSpeed.fraction(125);
+    }
+    if (scene.subject == Subject.droneAerial) {
+      return ShutterSpeed.fraction(250);
     }
 
     // From subject motion

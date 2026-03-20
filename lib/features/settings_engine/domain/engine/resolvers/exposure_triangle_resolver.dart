@@ -46,13 +46,20 @@ class ExposureTriangleResolver {
       case Intention.bokeh:
         return _resolveBokeh(ctx);
       case Intention.maxSharpness:
+      case Intention.minimalistNoise:
         return _resolveMaxSharpness(ctx);
       case Intention.freezeMotion:
+      case Intention.highSpeedSync:
         return _resolveFreezeMotion(ctx);
       case Intention.motionBlur:
+      case Intention.panning:
         return _resolveMotionBlur(ctx);
       case Intention.lowLight:
+      case Intention.documentary:
         return _resolveLowLight(ctx);
+      case Intention.hdrDynamicRange:
+      case Intention.longExposure:
+        return _resolveMaxSharpness(ctx);
     }
   }
 

@@ -222,6 +222,20 @@ class SceneInputScreen extends ConsumerWidget {
         Subject.sport => 'Sport',
         Subject.wildlife => 'Animalier',
         Subject.product => 'Produit',
+        Subject.concert => 'Concert',
+        Subject.food => 'Food',
+        Subject.realEstate => 'Immobilier',
+        Subject.aurora => 'Aurore',
+        Subject.lightning => 'Éclair',
+        Subject.fireworks => 'Feux d\'artifice',
+        Subject.underwater => 'Sous-marin',
+        Subject.wedding => 'Mariage',
+        Subject.event => 'Événement',
+        Subject.droneAerial => 'Drone',
+        Subject.selfPortrait => 'Autoportrait',
+        Subject.pet => 'Animal',
+        Subject.nightCityscape => 'Ville de nuit',
+        Subject.starTrails => 'Star trails',
       };
 
   static String _intentionLabel(Intention v) => switch (v) {
@@ -230,6 +244,12 @@ class SceneInputScreen extends ConsumerWidget {
         Intention.freezeMotion => 'Figer le mouvement',
         Intention.motionBlur => 'Filé de mouvement',
         Intention.lowLight => 'Basse lumière',
+        Intention.hdrDynamicRange => 'HDR',
+        Intention.longExposure => 'Pose longue',
+        Intention.panning => 'Panning',
+        Intention.highSpeedSync => 'Sync haute vitesse',
+        Intention.documentary => 'Documentaire',
+        Intention.minimalistNoise => 'Bruit minimal',
       };
 
   static String _lightConditionLabel(LightCondition v) => switch (v) {
@@ -242,6 +262,13 @@ class SceneInputScreen extends ConsumerWidget {
         LightCondition.neon => 'Néon',
         LightCondition.tungsten => 'Tungstène',
         LightCondition.led => 'LED',
+        LightCondition.mixedLighting => 'Mixte',
+        LightCondition.backlit => 'Contre-jour',
+        LightCondition.harshMidday => 'Midi dur',
+        LightCondition.diffused => 'Diffuse',
+        LightCondition.candlelight => 'Bougie',
+        LightCondition.stageLighting => 'Scène',
+        LightCondition.moonlight => 'Clair de lune',
       };
 
   static String _supportLabel(Support v) => switch (v) {

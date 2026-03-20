@@ -16,7 +16,8 @@ void main() {
       expect(find.text('Type'), findsOneWidget);
       expect(find.text('Environnement'), findsOneWidget);
       expect(find.text('Sujet'), findsOneWidget);
-      expect(find.text('Intention'), findsOneWidget);
+      // With 23 subject chips, Intention may be off-screen — check with skipOffstage: false
+      expect(find.text('Intention', skipOffstage: false), findsOneWidget);
     });
 
     testWidgets('shows shoot type chips (Photo, Vidéo)', (tester) async {

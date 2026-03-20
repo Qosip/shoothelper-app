@@ -71,6 +71,20 @@ class WbResolver {
         return (WbPreset.fluorescent, 'Fluorescent', 4000);
       case LightCondition.led:
         return (WbPreset.auto, 'Auto', 5000);
+      case LightCondition.mixedLighting:
+        return (WbPreset.auto, 'Auto', 4500);
+      case LightCondition.backlit:
+        return (WbPreset.daylight, 'Lumière du jour', 5200);
+      case LightCondition.harshMidday:
+        return (WbPreset.daylight, 'Lumière du jour', 5500);
+      case LightCondition.diffused:
+        return (WbPreset.cloudy, 'Nuageux', 6000);
+      case LightCondition.candlelight:
+        return (WbPreset.tungsten, 'Tungstène', 2000);
+      case LightCondition.stageLighting:
+        return (WbPreset.auto, 'Auto', 4000);
+      case LightCondition.moonlight:
+        return (WbPreset.auto, 'Auto', 4100);
     }
   }
 

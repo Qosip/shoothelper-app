@@ -42,6 +42,18 @@ class ExplanationGenerator {
         return 'grande ouverte pour compenser la vitesse élevée';
       case Intention.motionBlur:
         return 'fermée pour réduire la lumière et permettre une pose longue';
+      case Intention.hdrDynamicRange:
+        return 'au sweet spot pour maximiser la plage dynamique en bracketing';
+      case Intention.longExposure:
+        return 'fermée pour allonger le temps de pose';
+      case Intention.panning:
+        return 'fermée pour permettre une vitesse lente de panning';
+      case Intention.highSpeedSync:
+        return 'grande ouverte pour compenser la perte de puissance du flash HSS';
+      case Intention.documentary:
+        return 'polyvalente pour s\'adapter aux conditions changeantes';
+      case Intention.minimalistNoise:
+        return 'au sweet spot pour garder l\'ISO le plus bas possible';
     }
   }
 

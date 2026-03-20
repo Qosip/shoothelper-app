@@ -6,6 +6,7 @@ enum ShootType { photo, video }
 enum Environment { outdoorDay, outdoorNight, indoorBright, indoorDark, studio }
 
 enum Subject {
+  // MVP
   landscape,
   portrait,
   street,
@@ -15,11 +16,41 @@ enum Subject {
   sport,
   wildlife,
   product,
+  // V2-07
+  concert,
+  food,
+  realEstate,
+  aurora,
+  lightning,
+  fireworks,
+  underwater,
+  wedding,
+  event,
+  droneAerial,
+  selfPortrait,
+  pet,
+  nightCityscape,
+  starTrails,
 }
 
-enum Intention { maxSharpness, bokeh, freezeMotion, motionBlur, lowLight }
+enum Intention {
+  // MVP
+  maxSharpness,
+  bokeh,
+  freezeMotion,
+  motionBlur,
+  lowLight,
+  // V2-07
+  hdrDynamicRange,
+  longExposure,
+  panning,
+  highSpeedSync,
+  documentary,
+  minimalistNoise,
+}
 
 enum LightCondition {
+  // MVP
   directSun,
   shade,
   overcast,
@@ -29,6 +60,14 @@ enum LightCondition {
   neon,
   tungsten,
   led,
+  // V2-07
+  mixedLighting,
+  backlit,
+  harshMidday,
+  diffused,
+  candlelight,
+  stageLighting,
+  moonlight,
 }
 
 enum SubjectMotion { still, slow, fast, veryFast }
