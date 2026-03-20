@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shoothelper/shared/presentation/providers/gear_providers.dart';
+import 'package:shoothelper/shared/presentation/providers/gear_profile_store_provider.dart';
 import 'package:shoothelper/features/scene_input/presentation/screens/home_screen.dart';
 
 import '../../../helpers/test_helpers.dart';
@@ -19,6 +20,7 @@ void main() {
             currentLensProvider.overrideWithValue(
               AsyncValue.data(testLens()),
             ),
+            activeProfileProvider.overrideWithValue(null),
           ],
         ),
       );
@@ -42,6 +44,7 @@ void main() {
             currentLensProvider.overrideWithValue(
               const AsyncValue.loading(),
             ),
+            activeProfileProvider.overrideWithValue(null),
           ],
         ),
       );
@@ -60,6 +63,7 @@ void main() {
             currentLensProvider.overrideWithValue(
               AsyncValue.data(testLens()),
             ),
+            activeProfileProvider.overrideWithValue(null),
           ],
         ),
       );
@@ -79,6 +83,7 @@ void main() {
             currentLensProvider.overrideWithValue(
               AsyncValue.data(testLens()),
             ),
+            activeProfileProvider.overrideWithValue(null),
           ],
         ),
       );
