@@ -20,6 +20,9 @@ class EngineContext {
   final ShutterSpeed shutterMinSubject;
   final ShutterSpeed shutterMinEffective;
 
+  /// Light loss from optical filter (ND, CPL) in stops. 0 = no filter.
+  final double filterLightLossStops;
+
   const EngineContext({
     required this.body,
     required this.lens,
@@ -31,5 +34,6 @@ class EngineContext {
     required this.shutterMinSafe,
     required this.shutterMinSubject,
     required this.shutterMinEffective,
+    this.filterLightLossStops = 0,
   });
 }

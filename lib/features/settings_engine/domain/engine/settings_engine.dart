@@ -62,9 +62,15 @@ class SettingsEngine {
         _alternatives = alternatives,
         _explanations = explanations;
 
-  SettingsResult calculate(BodySpec body, LensSpec lens, SceneInput scene) {
+  SettingsResult calculate(
+    BodySpec body,
+    LensSpec lens,
+    SceneInput scene, {
+    double filterLightLossStops = 0,
+  }) {
     // Phase 1: Build context (focal, EV, min shutter, etc.)
-    final ctx = _contextBuilder.build(body, lens, scene);
+    final ctx = _contextBuilder.build(body, lens, scene,
+        filterLightLossStops: filterLightLossStops);
 
     // Phase 2: Independent settings
     final afModeSetting = _afMode.resolve(ctx);

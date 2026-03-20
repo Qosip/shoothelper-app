@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import '../../../../shared/domain/entities/optical_filter.dart';
+import '../../../../shared/presentation/providers/filter_providers.dart';
 import '../../../../shared/presentation/providers/gear_providers.dart';
 import '../../../../shared/presentation/providers/gear_profile_provider.dart';
 import '../../../../shared/presentation/providers/theme_provider.dart';
+import '../../../gear/presentation/widgets/filter_management_sheet.dart';
 import '../../../../shared/presentation/theme/app_colors.dart';
 import '../../../../shared/presentation/theme/app_spacing.dart';
 import '../../../../shared/presentation/theme/app_typography.dart';
@@ -19,6 +22,7 @@ class SettingsScreen extends ConsumerWidget {
     final lang = ref.watch(firmwareLanguageProvider);
     final profile = ref.watch(gearProfileProvider);
     final themeMode = ref.watch(themeModeProvider);
+    final filters = ref.watch(userFiltersProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
@@ -215,6 +219,45 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
+          const SizedBox(height: AppSpacing.xl),
+
+          // Filters section
+          Text('FILTRES OPTIQUES', style: AppTypography.overline),
+          const SizedBox(height: AppSpacing.sm),
+          if (filters.isNotEmpty)
+            Container(
+              decoration: BoxDecoration(
+                color: isDark ? AppColors.darkSurface1 : AppColors.lightSurface1,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: filters.map((f) => _FilterTile(
+                  filter: f,
+                  isDark: isDark,
+                  onDelete: () {
+                    ref.read(filterStoreProvider).removeFilter(f.id);
+                    ref.invalidate(userFiltersProvider);
+                  },
+                )).toList(),
+              ),
+            ),
+          const SizedBox(height: AppSpacing.sm),
+          OutlinedButton(
+            onPressed: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (_) => const FilterManagementSheet(),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(LucideIcons.plus, size: 18),
+                const SizedBox(width: AppSpacing.sm),
+                Text('Ajouter un filtre', style: AppTypography.body),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -387,6 +430,69 @@ class _ThemeTile extends StatelessWidget {
               Icon(LucideIcons.checkCircle, size: 20, color: AppColors.blueOptique),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _FilterTile extends StatelessWidget {
+  final OpticalFilter filter;
+  final bool isDark;
+  final VoidCallback onDelete;
+
+  const _FilterTile({
+    required this.filter,
+    required this.isDark,
+    required this.onDelete,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final subtitle = switch (filter) {
+      NdFilter(stops: final s) => '$s stops · ${filter.filterDiameterMm}mm',
+      NdVariableFilter(minStops: final min, maxStops: final max) =>
+        '$min-$max stops · ${filter.filterDiameterMm}mm',
+      CplFilter(lightLoss: final l) =>
+        '${l.toStringAsFixed(1)} stops · ${filter.filterDiameterMm}mm',
+      UvFilter() => '${filter.filterDiameterMm}mm',
+    };
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.base,
+        vertical: AppSpacing.md,
+      ),
+      child: Row(
+        children: [
+          Icon(LucideIcons.disc, size: 20, color: AppColors.blueOptique),
+          const SizedBox(width: AppSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(filter.name, style: AppTypography.body),
+                Text(
+                  subtitle,
+                  style: AppTypography.caption.copyWith(
+                    color: isDark
+                        ? AppColors.darkTextSecondary
+                        : AppColors.lightTextSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: onDelete,
+            child: Icon(
+              LucideIcons.x,
+              size: 18,
+              color: isDark
+                  ? AppColors.darkTextSecondary
+                  : AppColors.lightTextSecondary,
+            ),
+          ),
+        ],
       ),
     );
   }

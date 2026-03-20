@@ -17,11 +17,17 @@ class ContextBuilder {
   const ContextBuilder({AstroCalculator astro = const AstroCalculator()})
       : _astro = astro;
 
-  EngineContext build(BodySpec body, LensSpec lens, SceneInput scene) {
+  EngineContext build(
+    BodySpec body,
+    LensSpec lens,
+    SceneInput scene, {
+    double filterLightLossStops = 0,
+  }) {
     final focalMm = _chooseFocal(lens, scene);
     final focalEq = focalMm * body.cropFactor;
     final maxAp = FStop(lens.aperture.maxApertureAtFocal(focalMm));
-    final evTarget = _resolveEv(scene);
+    // Filter reduces available light → subtract from EV target
+    final evTarget = _resolveEv(scene) - filterLightLossStops;
     final shutterSafe = _shutterMinSafe(body, lens, scene, focalEq);
     final shutterSubject = _shutterMinSubject(scene, body, focalMm, maxAp);
     // Pick the MORE restrictive (faster = smaller seconds value)
@@ -48,6 +54,7 @@ class ContextBuilder {
       shutterMinSafe: shutterSafe,
       shutterMinSubject: shutterSubject,
       shutterMinEffective: shutterEffective,
+      filterLightLossStops: filterLightLossStops,
     );
   }
 

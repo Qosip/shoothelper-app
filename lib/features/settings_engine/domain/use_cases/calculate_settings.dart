@@ -16,7 +16,9 @@ class CalculateSettings {
     required BodySpec body,
     required LensSpec lens,
     required SceneInput scene,
+    double filterLightLossStops = 0,
   }) {
-    return _engine.calculate(body, lens, scene);
+    return _engine.calculate(body, lens, scene,
+        filterLightLossStops: filterLightLossStops);
   }
 }
