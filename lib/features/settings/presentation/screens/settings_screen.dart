@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../shared/presentation/providers/gear_providers.dart';
 import '../../../../shared/presentation/providers/gear_profile_provider.dart';
+import '../../../../shared/presentation/providers/theme_provider.dart';
 import '../../../../shared/presentation/theme/app_colors.dart';
 import '../../../../shared/presentation/theme/app_spacing.dart';
 import '../../../../shared/presentation/theme/app_typography.dart';
@@ -17,6 +18,7 @@ class SettingsScreen extends ConsumerWidget {
     final lensAsync = ref.watch(currentLensProvider);
     final lang = ref.watch(firmwareLanguageProvider);
     final profile = ref.watch(gearProfileProvider);
+    final themeMode = ref.watch(themeModeProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
@@ -176,6 +178,43 @@ class SettingsScreen extends ConsumerWidget {
                   : AppColors.lightTextSecondary,
             ),
           ),
+          const SizedBox(height: AppSpacing.xl),
+
+          // Theme section
+          Text('APPARENCE', style: AppTypography.overline),
+          const SizedBox(height: AppSpacing.sm),
+          Container(
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.darkSurface1 : AppColors.lightSurface1,
+              borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                _ThemeTile(
+                  icon: LucideIcons.smartphone,
+                  label: 'Système',
+                  selected: themeMode == ThemeMode.system,
+                  isDark: isDark,
+                  onTap: () => ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.system),
+                ),
+                _ThemeTile(
+                  icon: LucideIcons.sun,
+                  label: 'Clair',
+                  selected: themeMode == ThemeMode.light,
+                  isDark: isDark,
+                  onTap: () => ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light),
+                ),
+                _ThemeTile(
+                  icon: LucideIcons.moon,
+                  label: 'Sombre',
+                  selected: themeMode == ThemeMode.dark,
+                  isDark: isDark,
+                  onTap: () => ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.dark),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -280,6 +319,60 @@ class _LanguageTile extends StatelessWidget {
         child: Row(
           children: [
             Text(flag, style: const TextStyle(fontSize: 24)),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Text(
+                label,
+                style: AppTypography.body.copyWith(
+                  color: selected ? AppColors.blueOptique : null,
+                  fontWeight: selected ? FontWeight.w600 : null,
+                ),
+              ),
+            ),
+            if (selected)
+              Icon(LucideIcons.checkCircle, size: 20, color: AppColors.blueOptique),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ThemeTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool selected;
+  final bool isDark;
+  final VoidCallback onTap;
+
+  const _ThemeTile({
+    required this.icon,
+    required this.label,
+    required this.selected,
+    required this.isDark,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: selected ? null : onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.base,
+          vertical: AppSpacing.md,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: 20,
+              color: selected
+                  ? AppColors.blueOptique
+                  : (isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.lightTextSecondary),
+            ),
             const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Text(
