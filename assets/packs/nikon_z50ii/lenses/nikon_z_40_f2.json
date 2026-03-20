@@ -1,0 +1,48 @@
+{
+  "id": "nikon_z_40_f2",
+  "brand_id": "nikon",
+  "mount_id": "nikon_z",
+  "name": "Nikon NIKKOR Z 40mm f/2",
+  "display_name": "Z 40mm f/2",
+  "type": "prime",
+  "designed_for": "full-frame",
+
+  "spec": {
+    "focal_length": {
+      "type": "prime",
+      "min_mm": 40,
+      "max_mm": 40
+    },
+    "aperture": {
+      "type": "constant",
+      "max_aperture": 2.0,
+      "min_aperture": 16,
+      "variable_aperture_map": null
+    },
+    "focus": {
+      "min_focus_distance_m": 0.29,
+      "min_focus_distance_at_focal_mm": 40,
+      "min_focus_distance_map": null,
+      "autofocus": true,
+      "af_motor": "stepping",
+      "manual_override": true,
+      "internal_focus": true
+    },
+    "stabilization": {
+      "has_ois": false,
+      "ois_stops": null
+    },
+    "optical": {
+      "elements": 6,
+      "groups": 4,
+      "filter_diameter_mm": 52,
+      "max_magnification": 0.17,
+      "angle_of_view_diagonal_deg": { "wide": 57.0, "tele": 57.0 }
+    },
+    "physical": {
+      "weight_g": 170,
+      "length_mm": 45.5,
+      "diameter_mm": 64.5
+    }
+  }
+}

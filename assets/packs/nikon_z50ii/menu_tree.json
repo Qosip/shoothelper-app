@@ -1,0 +1,777 @@
+{
+  "firmware_version": "1.0",
+  "root": [
+    {
+      "id": "photo_shooting",
+      "type": "tab",
+      "icon": "camera",
+      "labels": {
+        "en": "Photo Shooting Menu",
+        "fr": "Menu Prise de vue photo"
+      },
+      "tab_index": 0,
+      "children": [
+        {
+          "id": "photo_settings_1",
+          "type": "page",
+          "labels": {
+            "en": "Photo 1",
+            "fr": "Photo 1"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "image_quality_item",
+              "type": "setting",
+              "labels": {
+                "en": "Image quality",
+                "fr": "QualitÃ© d'image"
+              },
+              "setting_id": "file_format",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "raw-nef",
+                  "labels": {
+                    "en": "RAW (NEF)",
+                    "fr": "RAW (NEF)"
+                  },
+                  "short_labels": {
+                    "en": "RAW",
+                    "fr": "RAW"
+                  }
+                },
+                {
+                  "id": "jpeg-fine",
+                  "labels": {
+                    "en": "JPEG fine",
+                    "fr": "JPEG fine"
+                  },
+                  "short_labels": {
+                    "en": "FINE",
+                    "fr": "FINE"
+                  }
+                },
+                {
+                  "id": "jpeg-normal",
+                  "labels": {
+                    "en": "JPEG normal",
+                    "fr": "JPEG normal"
+                  },
+                  "short_labels": {
+                    "en": "NORM",
+                    "fr": "NORM"
+                  }
+                },
+                {
+                  "id": "jpeg-basic",
+                  "labels": {
+                    "en": "JPEG basic",
+                    "fr": "JPEG basic"
+                  },
+                  "short_labels": {
+                    "en": "BASIC",
+                    "fr": "BASIC"
+                  }
+                },
+                {
+                  "id": "raw+jpeg-fine",
+                  "labels": {
+                    "en": "RAW + JPEG fine",
+                    "fr": "RAW + JPEG fine"
+                  },
+                  "short_labels": {
+                    "en": "RAW+F",
+                    "fr": "RAW+F"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "iso_sensitivity_item",
+              "type": "setting",
+              "labels": {
+                "en": "ISO sensitivity settings",
+                "fr": "RÃ©glages de la sensibilitÃ© ISO"
+              },
+              "setting_id": "iso",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "auto",
+                  "labels": {
+                    "en": "Auto",
+                    "fr": "Auto"
+                  },
+                  "short_labels": {
+                    "en": "AUTO",
+                    "fr": "AUTO"
+                  }
+                },
+                {
+                  "id": "100",
+                  "labels": {
+                    "en": "100",
+                    "fr": "100"
+                  },
+                  "short_labels": {
+                    "en": "100",
+                    "fr": "100"
+                  }
+                },
+                {
+                  "id": "200",
+                  "labels": {
+                    "en": "200",
+                    "fr": "200"
+                  },
+                  "short_labels": {
+                    "en": "200",
+                    "fr": "200"
+                  }
+                },
+                {
+                  "id": "400",
+                  "labels": {
+                    "en": "400",
+                    "fr": "400"
+                  },
+                  "short_labels": {
+                    "en": "400",
+                    "fr": "400"
+                  }
+                },
+                {
+                  "id": "800",
+                  "labels": {
+                    "en": "800",
+                    "fr": "800"
+                  },
+                  "short_labels": {
+                    "en": "800",
+                    "fr": "800"
+                  }
+                },
+                {
+                  "id": "1600",
+                  "labels": {
+                    "en": "1600",
+                    "fr": "1600"
+                  },
+                  "short_labels": {
+                    "en": "1600",
+                    "fr": "1600"
+                  }
+                },
+                {
+                  "id": "3200",
+                  "labels": {
+                    "en": "3200",
+                    "fr": "3200"
+                  },
+                  "short_labels": {
+                    "en": "3200",
+                    "fr": "3200"
+                  }
+                },
+                {
+                  "id": "6400",
+                  "labels": {
+                    "en": "6400",
+                    "fr": "6400"
+                  },
+                  "short_labels": {
+                    "en": "6400",
+                    "fr": "6400"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "white_balance_item",
+              "type": "setting",
+              "labels": {
+                "en": "White balance",
+                "fr": "Balance des blancs"
+              },
+              "setting_id": "white_balance",
+              "item_index": 2,
+              "values": [
+                {
+                  "id": "auto",
+                  "labels": {
+                    "en": "Auto",
+                    "fr": "Auto"
+                  },
+                  "short_labels": {
+                    "en": "AUTO",
+                    "fr": "AUTO"
+                  }
+                },
+                {
+                  "id": "natural-light-auto",
+                  "labels": {
+                    "en": "Natural light auto",
+                    "fr": "Auto lumiÃ¨re naturelle"
+                  },
+                  "short_labels": {
+                    "en": "NatAuto",
+                    "fr": "AutoNat"
+                  }
+                },
+                {
+                  "id": "direct-sunlight",
+                  "labels": {
+                    "en": "Direct sunlight",
+                    "fr": "EnsoleillÃ©"
+                  },
+                  "short_labels": {
+                    "en": "Sun",
+                    "fr": "Soleil"
+                  }
+                },
+                {
+                  "id": "cloudy",
+                  "labels": {
+                    "en": "Cloudy",
+                    "fr": "Nuageux"
+                  },
+                  "short_labels": {
+                    "en": "Cloud",
+                    "fr": "Nuag"
+                  }
+                },
+                {
+                  "id": "shade",
+                  "labels": {
+                    "en": "Shade",
+                    "fr": "Ombre"
+                  },
+                  "short_labels": {
+                    "en": "Shade",
+                    "fr": "Ombre"
+                  }
+                },
+                {
+                  "id": "incandescent",
+                  "labels": {
+                    "en": "Incandescent",
+                    "fr": "Incandescent"
+                  },
+                  "short_labels": {
+                    "en": "Incand",
+                    "fr": "Incand"
+                  }
+                },
+                {
+                  "id": "fluorescent",
+                  "labels": {
+                    "en": "Fluorescent",
+                    "fr": "Fluorescent"
+                  },
+                  "short_labels": {
+                    "en": "Fluor",
+                    "fr": "Fluor"
+                  }
+                },
+                {
+                  "id": "flash",
+                  "labels": {
+                    "en": "Flash",
+                    "fr": "Flash"
+                  },
+                  "short_labels": {
+                    "en": "Flash",
+                    "fr": "Flash"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "metering_item",
+              "type": "setting",
+              "labels": {
+                "en": "Metering",
+                "fr": "Mesure de l'exposition"
+              },
+              "setting_id": "metering",
+              "item_index": 3,
+              "values": [
+                {
+                  "id": "matrix",
+                  "labels": {
+                    "en": "Matrix metering",
+                    "fr": "Mesure matricielle"
+                  },
+                  "short_labels": {
+                    "en": "Matrix",
+                    "fr": "Matric"
+                  }
+                },
+                {
+                  "id": "center-weighted",
+                  "labels": {
+                    "en": "Center-weighted metering",
+                    "fr": "Mesure pondÃ©rÃ©e centrale"
+                  },
+                  "short_labels": {
+                    "en": "Center",
+                    "fr": "Centre"
+                  }
+                },
+                {
+                  "id": "spot",
+                  "labels": {
+                    "en": "Spot metering",
+                    "fr": "Mesure spot"
+                  },
+                  "short_labels": {
+                    "en": "Spot",
+                    "fr": "Spot"
+                  }
+                },
+                {
+                  "id": "highlight-weighted",
+                  "labels": {
+                    "en": "Highlight-weighted metering",
+                    "fr": "Mesure hautes lumiÃ¨res"
+                  },
+                  "short_labels": {
+                    "en": "Hi-light",
+                    "fr": "Htes lum"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "photo_settings_2",
+          "type": "page",
+          "labels": {
+            "en": "Photo 2",
+            "fr": "Photo 2"
+          },
+          "page_index": 1,
+          "children": [
+            {
+              "id": "release_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Release mode",
+                "fr": "Mode de dÃ©clenchement"
+              },
+              "setting_id": "drive",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "single",
+                  "labels": {
+                    "en": "Single frame",
+                    "fr": "Vue par vue"
+                  },
+                  "short_labels": {
+                    "en": "S",
+                    "fr": "S"
+                  }
+                },
+                {
+                  "id": "continuous-hi",
+                  "labels": {
+                    "en": "Continuous H",
+                    "fr": "Rafale rapide"
+                  },
+                  "short_labels": {
+                    "en": "CH",
+                    "fr": "CH"
+                  }
+                },
+                {
+                  "id": "continuous-hi-ext",
+                  "labels": {
+                    "en": "Continuous H (extended)",
+                    "fr": "Rafale rapide (Ã©tendue)"
+                  },
+                  "short_labels": {
+                    "en": "CH+",
+                    "fr": "CH+"
+                  }
+                },
+                {
+                  "id": "continuous-lo",
+                  "labels": {
+                    "en": "Continuous L",
+                    "fr": "Rafale lente"
+                  },
+                  "short_labels": {
+                    "en": "CL",
+                    "fr": "CL"
+                  }
+                },
+                {
+                  "id": "self-timer",
+                  "labels": {
+                    "en": "Self-timer",
+                    "fr": "Retardateur"
+                  },
+                  "short_labels": {
+                    "en": "Timer",
+                    "fr": "Retard"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "vr_item",
+              "type": "setting",
+              "labels": {
+                "en": "Vibration reduction",
+                "fr": "RÃ©duction de vibration"
+              },
+              "setting_id": "stabilization",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "on-normal",
+                  "labels": {
+                    "en": "Normal",
+                    "fr": "Normale"
+                  },
+                  "short_labels": {
+                    "en": "Normal",
+                    "fr": "Norm"
+                  }
+                },
+                {
+                  "id": "on-sport",
+                  "labels": {
+                    "en": "Sport",
+                    "fr": "Sport"
+                  },
+                  "short_labels": {
+                    "en": "Sport",
+                    "fr": "Sport"
+                  }
+                },
+                {
+                  "id": "off",
+                  "labels": {
+                    "en": "Off",
+                    "fr": "DÃ©sactivÃ©e"
+                  },
+                  "short_labels": {
+                    "en": "Off",
+                    "fr": "Off"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "af_settings",
+      "type": "tab",
+      "icon": "focus",
+      "labels": {
+        "en": "Autofocus",
+        "fr": "Autofocus"
+      },
+      "tab_index": 1,
+      "children": [
+        {
+          "id": "af_page_1",
+          "type": "page",
+          "labels": {
+            "en": "AF 1",
+            "fr": "AF 1"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "focus_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Focus mode",
+                "fr": "Mode de mise au point"
+              },
+              "setting_id": "af_mode",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "af-s",
+                  "labels": {
+                    "en": "AF-S (Single AF)",
+                    "fr": "AF-S (AF ponctuel)"
+                  },
+                  "short_labels": {
+                    "en": "AF-S",
+                    "fr": "AF-S"
+                  }
+                },
+                {
+                  "id": "af-c",
+                  "labels": {
+                    "en": "AF-C (Continuous AF)",
+                    "fr": "AF-C (AF continu)"
+                  },
+                  "short_labels": {
+                    "en": "AF-C",
+                    "fr": "AF-C"
+                  }
+                },
+                {
+                  "id": "af-f",
+                  "labels": {
+                    "en": "AF-F (Full-time AF)",
+                    "fr": "AF-F (AF permanent)"
+                  },
+                  "short_labels": {
+                    "en": "AF-F",
+                    "fr": "AF-F"
+                  }
+                },
+                {
+                  "id": "mf",
+                  "labels": {
+                    "en": "MF (Manual focus)",
+                    "fr": "MF (Mise au point manuelle)"
+                  },
+                  "short_labels": {
+                    "en": "MF",
+                    "fr": "MF"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "af_area_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "AF-area mode",
+                "fr": "Mode de zone AF"
+              },
+              "setting_id": "af_area",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "auto-area",
+                  "labels": {
+                    "en": "Auto-area AF",
+                    "fr": "AF zone automatique"
+                  },
+                  "short_labels": {
+                    "en": "Auto",
+                    "fr": "Auto"
+                  }
+                },
+                {
+                  "id": "wide-area-l",
+                  "labels": {
+                    "en": "Wide-area AF (L)",
+                    "fr": "AF zone large (L)"
+                  },
+                  "short_labels": {
+                    "en": "Wide-L",
+                    "fr": "Large-L"
+                  }
+                },
+                {
+                  "id": "wide-area-s",
+                  "labels": {
+                    "en": "Wide-area AF (S)",
+                    "fr": "AF zone large (S)"
+                  },
+                  "short_labels": {
+                    "en": "Wide-S",
+                    "fr": "Large-S"
+                  }
+                },
+                {
+                  "id": "single-point",
+                  "labels": {
+                    "en": "Single-point AF",
+                    "fr": "AF point sÃ©lectif"
+                  },
+                  "short_labels": {
+                    "en": "1-Pt",
+                    "fr": "1-Pt"
+                  }
+                },
+                {
+                  "id": "subject-tracking",
+                  "labels": {
+                    "en": "Subject-tracking AF",
+                    "fr": "AF suivi du sujet"
+                  },
+                  "short_labels": {
+                    "en": "Track",
+                    "fr": "Suivi"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "subject_detect_item",
+              "type": "setting",
+              "labels": {
+                "en": "Subject detection",
+                "fr": "DÃ©tection du sujet"
+              },
+              "setting_id": "subject_detection",
+              "item_index": 2,
+              "values": [
+                {
+                  "id": "auto",
+                  "labels": {
+                    "en": "Auto",
+                    "fr": "Auto"
+                  },
+                  "short_labels": {
+                    "en": "Auto",
+                    "fr": "Auto"
+                  }
+                },
+                {
+                  "id": "people",
+                  "labels": {
+                    "en": "People",
+                    "fr": "Personnes"
+                  },
+                  "short_labels": {
+                    "en": "People",
+                    "fr": "Pers."
+                  }
+                },
+                {
+                  "id": "dog_cat",
+                  "labels": {
+                    "en": "Dogs/Cats",
+                    "fr": "Chiens/Chats"
+                  },
+                  "short_labels": {
+                    "en": "Dog/Cat",
+                    "fr": "Ch/Ch"
+                  }
+                },
+                {
+                  "id": "bird",
+                  "labels": {
+                    "en": "Birds",
+                    "fr": "Oiseaux"
+                  },
+                  "short_labels": {
+                    "en": "Bird",
+                    "fr": "Oiseau"
+                  }
+                },
+                {
+                  "id": "car_motorcycle_bicycle",
+                  "labels": {
+                    "en": "Car/Motorcycle/Bicycle",
+                    "fr": "Voiture/Moto/VÃ©lo"
+                  },
+                  "short_labels": {
+                    "en": "Vehicle",
+                    "fr": "VÃ©hic."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exposure_tab",
+      "type": "tab",
+      "icon": "exposure",
+      "labels": {
+        "en": "Exposure",
+        "fr": "Exposition"
+      },
+      "tab_index": 2,
+      "children": [
+        {
+          "id": "exposure_page",
+          "type": "page",
+          "labels": {
+            "en": "Exposure",
+            "fr": "Exposition"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "exposure_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Exposure mode",
+                "fr": "Mode d'exposition"
+              },
+              "setting_id": "exposure_mode",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "p",
+                  "labels": {
+                    "en": "Programmed auto",
+                    "fr": "Auto programmÃ©"
+                  },
+                  "short_labels": {
+                    "en": "P",
+                    "fr": "P"
+                  }
+                },
+                {
+                  "id": "s",
+                  "labels": {
+                    "en": "Shutter-priority auto",
+                    "fr": "Auto prioritÃ© vitesse"
+                  },
+                  "short_labels": {
+                    "en": "S",
+                    "fr": "S"
+                  }
+                },
+                {
+                  "id": "a",
+                  "labels": {
+                    "en": "Aperture-priority auto",
+                    "fr": "Auto prioritÃ© ouverture"
+                  },
+                  "short_labels": {
+                    "en": "A",
+                    "fr": "A"
+                  }
+                },
+                {
+                  "id": "m",
+                  "labels": {
+                    "en": "Manual",
+                    "fr": "Manuel"
+                  },
+                  "short_labels": {
+                    "en": "M",
+                    "fr": "M"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "exposure_comp_item",
+              "type": "setting",
+              "labels": {
+                "en": "Exposure compensation",
+                "fr": "Correction de l'exposition"
+              },
+              "setting_id": "exposure_compensation",
+              "item_index": 1,
+              "values": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

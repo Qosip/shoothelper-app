@@ -83,7 +83,7 @@ class BodyMapper {
   static StabilizationSpec _mapStabilization(StabilizationSpecModel m) {
     return StabilizationSpec(
       hasIbis: m.hasIbis,
-      ibisStops: m.ibisStops,
+      ibisStops: m.ibisStops ?? 0,
     );
   }
 

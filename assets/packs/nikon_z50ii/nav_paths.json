@@ -1,0 +1,220 @@
+[
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "af_mode",
+    "firmware_version": "1.0",
+    "menu_path": ["af_settings", "af_page_1", "focus_mode_item"],
+    "menu_item_id": "focus_mode_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "focus_mode", "labels": { "en": "Select Focus mode", "fr": "Sélectionner Mode de mise au point" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "You can assign Focus mode to the Fn2 button for one-touch access.", "fr": "Tu peux assigner le mode AF au bouton Fn2 pour un accès direct." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "af_area",
+    "firmware_version": "1.0",
+    "menu_path": ["af_settings", "af_page_1", "af_area_mode_item"],
+    "menu_item_id": "af_area_mode_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "af_area_mode", "labels": { "en": "Select AF-area mode", "fr": "Sélectionner Mode de zone AF" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Use the multi selector to move the focus point in Single-point or Wide-area modes.", "fr": "Utilise le sélecteur multidirectionnel pour déplacer le point AF en mode Point sélectif ou Zone large." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "aperture",
+    "firmware_version": "1.0",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "A"],
+      "dial_id": "sub_command_dial",
+      "labels": { "en": "In A or M mode, turn the sub-command dial to change aperture.", "fr": "En mode A ou M, tourne la molette secondaire pour changer l'ouverture." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "The aperture value is shown at the bottom of the display and in the viewfinder.", "fr": "La valeur d'ouverture s'affiche en bas de l'écran et dans le viseur." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "shutter_speed",
+    "firmware_version": "1.0",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "S"],
+      "dial_id": "command_dial",
+      "labels": { "en": "In S or M mode, turn the command dial to change shutter speed.", "fr": "En mode S ou M, tourne la molette de commande pour changer la vitesse." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "Nikon displays shutter speed without the fraction. '250' means 1/250s. Values with '\"' (e.g. 2\") mean seconds.", "fr": "Nikon affiche la vitesse sans la fraction. '250' signifie 1/250s. Les valeurs avec '\"' (ex: 2\") signifient des secondes." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "iso",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_1", "iso_sensitivity_item"],
+    "menu_item_id": "iso_sensitivity_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "iso_sensitivity", "labels": { "en": "Select ISO sensitivity", "fr": "Sélectionner Sensibilité ISO" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Auto ISO with a maximum limit is recommended for beginners. Set the max in ISO sensitivity settings.", "fr": "L'ISO auto avec un maximum est recommandé pour les débutants. Règle le max dans les réglages de sensibilité ISO." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "exposure_mode",
+    "firmware_version": "1.0",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": [],
+      "dial_id": "mode_dial",
+      "labels": { "en": "Turn the mode dial on top of the camera to select the exposure mode.", "fr": "Tourne la molette de mode sur le dessus de l'appareil pour sélectionner le mode d'exposition." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "The Z50 II has a physical mode dial: P, S, A, M. No need to enter a menu.", "fr": "Le Z50 II a une molette de mode physique : P, S, A, M. Pas besoin d'aller dans un menu." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "metering",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_1", "metering_item"],
+    "menu_item_id": "metering_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "metering", "labels": { "en": "Select Metering", "fr": "Sélectionner Mesure de l'exposition" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": []
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "white_balance",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_1", "white_balance_item"],
+    "menu_item_id": "white_balance_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "white_balance", "labels": { "en": "Select White balance", "fr": "Sélectionner Balance des blancs" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Natural light auto is a great default — it reduces the orange cast under warm lighting.", "fr": "Auto lumière naturelle est un excellent choix par défaut — il réduit la dominante orange sous éclairage chaud." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "drive",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_2", "release_mode_item"],
+    "menu_item_id": "release_mode_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "release_mode", "labels": { "en": "Select Release mode", "fr": "Sélectionner Mode de déclenchement" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Continuous H (extended) shoots at 30fps with electronic shutter, but with a 12-bit RAW crop.", "fr": "Rafale rapide (étendue) atteint 30 i/s avec l'obturateur électronique, mais avec un RAW 12 bits recadré." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "stabilization",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_2", "vr_item"],
+    "menu_item_id": "vr_item",
+    "quick_access": null,
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "The Z50 II has no in-body VR. Stabilization depends on your lens. The Z DX 16-50mm has VR.", "fr": "Le Z50 II n'a pas de VR intégré. La stabilisation dépend de ton objectif. Le Z DX 16-50mm a la VR." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "file_format",
+    "firmware_version": "1.0",
+    "menu_path": ["photo_shooting", "photo_settings_1", "image_quality_item"],
+    "menu_item_id": "image_quality_item",
+    "quick_access": {
+      "method": "i_menu",
+      "steps": [
+        { "action": "press", "target": "i_button", "labels": { "en": "Press i button", "fr": "Appuyer sur le bouton i" } },
+        { "action": "navigate", "target": "image_quality", "labels": { "en": "Select Image quality", "fr": "Sélectionner Qualité d'image" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "RAW files are NEF format. Use Nikon NX Studio or Adobe Camera Raw to process them.", "fr": "Les fichiers RAW sont au format NEF. Utilise Nikon NX Studio ou Adobe Camera Raw pour les traiter." }
+      }
+    ]
+  },
+  {
+    "body_id": "nikon_z50ii",
+    "setting_id": "exposure_compensation",
+    "firmware_version": "1.0",
+    "menu_path": ["exposure_tab", "exposure_page", "exposure_comp_item"],
+    "menu_item_id": "exposure_comp_item",
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["P", "S", "A"],
+      "dial_id": "command_dial",
+      "labels": { "en": "In P, S, or A mode, the command dial adjusts exposure compensation.", "fr": "En mode P, S ou A, la molette de commande ajuste la correction d'exposition." }
+    },
+    "tips": []
+  }
+]

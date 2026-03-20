@@ -1,0 +1,734 @@
+{
+  "firmware_version": "1.1",
+  "root": [
+    {
+      "id": "shooting",
+      "type": "tab",
+      "icon": "camera",
+      "labels": {
+        "en": "Shooting",
+        "fr": "Prise de vue"
+      },
+      "tab_index": 0,
+      "children": [
+        {
+          "id": "shoot_settings_1",
+          "type": "page",
+          "labels": {
+            "en": "Shoot 1",
+            "fr": "Prise de vue 1"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "image_quality_item",
+              "type": "setting",
+              "labels": {
+                "en": "Image quality",
+                "fr": "QualitÃ© d'image"
+              },
+              "setting_id": "file_format",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "raw",
+                  "labels": {
+                    "en": "RAW",
+                    "fr": "RAW"
+                  },
+                  "short_labels": {
+                    "en": "RAW",
+                    "fr": "RAW"
+                  }
+                },
+                {
+                  "id": "craw",
+                  "labels": {
+                    "en": "Compact RAW",
+                    "fr": "RAW compact"
+                  },
+                  "short_labels": {
+                    "en": "CRAW",
+                    "fr": "CRAW"
+                  }
+                },
+                {
+                  "id": "jpeg-fine",
+                  "labels": {
+                    "en": "JPEG Fine",
+                    "fr": "JPEG Fin"
+                  },
+                  "short_labels": {
+                    "en": "JPEG F",
+                    "fr": "JPEG F"
+                  }
+                },
+                {
+                  "id": "jpeg-normal",
+                  "labels": {
+                    "en": "JPEG Normal",
+                    "fr": "JPEG Normal"
+                  },
+                  "short_labels": {
+                    "en": "JPEG",
+                    "fr": "JPEG"
+                  }
+                },
+                {
+                  "id": "raw+jpeg",
+                  "labels": {
+                    "en": "RAW+JPEG",
+                    "fr": "RAW+JPEG"
+                  },
+                  "short_labels": {
+                    "en": "RAW+J",
+                    "fr": "RAW+J"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "drive_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Drive mode",
+                "fr": "Mode d'acquisition"
+              },
+              "setting_id": "drive",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "single",
+                  "labels": {
+                    "en": "Single shooting",
+                    "fr": "Vue par vue"
+                  },
+                  "short_labels": {
+                    "en": "Single",
+                    "fr": "Vue/vue"
+                  }
+                },
+                {
+                  "id": "continuous-hi",
+                  "labels": {
+                    "en": "High-speed continuous",
+                    "fr": "Rafale haute vitesse"
+                  },
+                  "short_labels": {
+                    "en": "Hi",
+                    "fr": "Rafale H"
+                  }
+                },
+                {
+                  "id": "continuous-lo",
+                  "labels": {
+                    "en": "Low-speed continuous",
+                    "fr": "Rafale basse vitesse"
+                  },
+                  "short_labels": {
+                    "en": "Lo",
+                    "fr": "Rafale B"
+                  }
+                },
+                {
+                  "id": "self-timer-10",
+                  "labels": {
+                    "en": "Self-timer 10s",
+                    "fr": "Retardateur 10s"
+                  },
+                  "short_labels": {
+                    "en": "10s",
+                    "fr": "10s"
+                  }
+                },
+                {
+                  "id": "self-timer-2",
+                  "labels": {
+                    "en": "Self-timer 2s",
+                    "fr": "Retardateur 2s"
+                  },
+                  "short_labels": {
+                    "en": "2s",
+                    "fr": "2s"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shoot_settings_2",
+          "type": "page",
+          "labels": {
+            "en": "Shoot 2",
+            "fr": "Prise de vue 2"
+          },
+          "page_index": 1,
+          "children": [
+            {
+              "id": "exposure_comp_item",
+              "type": "setting",
+              "labels": {
+                "en": "Exposure compensation",
+                "fr": "Correction d'exposition"
+              },
+              "setting_id": "exposure_compensation",
+              "item_index": 0,
+              "values": null
+            },
+            {
+              "id": "iso_speed_item",
+              "type": "setting",
+              "labels": {
+                "en": "ISO speed",
+                "fr": "Vitesse ISO"
+              },
+              "setting_id": "iso",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "auto",
+                  "labels": {
+                    "en": "AUTO",
+                    "fr": "AUTO"
+                  },
+                  "short_labels": {
+                    "en": "AUTO",
+                    "fr": "AUTO"
+                  }
+                },
+                {
+                  "id": "100",
+                  "labels": {
+                    "en": "ISO 100",
+                    "fr": "ISO 100"
+                  },
+                  "short_labels": {
+                    "en": "100",
+                    "fr": "100"
+                  }
+                },
+                {
+                  "id": "200",
+                  "labels": {
+                    "en": "ISO 200",
+                    "fr": "ISO 200"
+                  },
+                  "short_labels": {
+                    "en": "200",
+                    "fr": "200"
+                  }
+                },
+                {
+                  "id": "400",
+                  "labels": {
+                    "en": "ISO 400",
+                    "fr": "ISO 400"
+                  },
+                  "short_labels": {
+                    "en": "400",
+                    "fr": "400"
+                  }
+                },
+                {
+                  "id": "800",
+                  "labels": {
+                    "en": "ISO 800",
+                    "fr": "ISO 800"
+                  },
+                  "short_labels": {
+                    "en": "800",
+                    "fr": "800"
+                  }
+                },
+                {
+                  "id": "1600",
+                  "labels": {
+                    "en": "ISO 1600",
+                    "fr": "ISO 1600"
+                  },
+                  "short_labels": {
+                    "en": "1600",
+                    "fr": "1600"
+                  }
+                },
+                {
+                  "id": "3200",
+                  "labels": {
+                    "en": "ISO 3200",
+                    "fr": "ISO 3200"
+                  },
+                  "short_labels": {
+                    "en": "3200",
+                    "fr": "3200"
+                  }
+                },
+                {
+                  "id": "6400",
+                  "labels": {
+                    "en": "ISO 6400",
+                    "fr": "ISO 6400"
+                  },
+                  "short_labels": {
+                    "en": "6400",
+                    "fr": "6400"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "metering_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Metering mode",
+                "fr": "Mode de mesure"
+              },
+              "setting_id": "metering",
+              "item_index": 2,
+              "values": [
+                {
+                  "id": "evaluative",
+                  "labels": {
+                    "en": "Evaluative metering",
+                    "fr": "Mesure Ã©valuative"
+                  },
+                  "short_labels": {
+                    "en": "Eval",
+                    "fr": "Ã‰val"
+                  }
+                },
+                {
+                  "id": "partial",
+                  "labels": {
+                    "en": "Partial metering",
+                    "fr": "Mesure sÃ©lective"
+                  },
+                  "short_labels": {
+                    "en": "Partial",
+                    "fr": "SÃ©lect"
+                  }
+                },
+                {
+                  "id": "center-weighted",
+                  "labels": {
+                    "en": "Center-weighted average",
+                    "fr": "Moyenne Ã  prÃ©pondÃ©rance centrale"
+                  },
+                  "short_labels": {
+                    "en": "Center",
+                    "fr": "Centre"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "white_balance_item",
+              "type": "setting",
+              "labels": {
+                "en": "White balance",
+                "fr": "Balance des blancs"
+              },
+              "setting_id": "white_balance",
+              "item_index": 3,
+              "values": [
+                {
+                  "id": "auto",
+                  "labels": {
+                    "en": "Auto (Ambience priority)",
+                    "fr": "Auto (prioritÃ© ambiance)"
+                  },
+                  "short_labels": {
+                    "en": "AWB",
+                    "fr": "AWB"
+                  }
+                },
+                {
+                  "id": "daylight",
+                  "labels": {
+                    "en": "Daylight",
+                    "fr": "LumiÃ¨re du jour"
+                  },
+                  "short_labels": {
+                    "en": "Day",
+                    "fr": "Jour"
+                  }
+                },
+                {
+                  "id": "shade",
+                  "labels": {
+                    "en": "Shade",
+                    "fr": "Ombre"
+                  },
+                  "short_labels": {
+                    "en": "Shade",
+                    "fr": "Ombre"
+                  }
+                },
+                {
+                  "id": "cloudy",
+                  "labels": {
+                    "en": "Cloudy",
+                    "fr": "Nuageux"
+                  },
+                  "short_labels": {
+                    "en": "Cloud",
+                    "fr": "Nuag"
+                  }
+                },
+                {
+                  "id": "tungsten",
+                  "labels": {
+                    "en": "Tungsten light",
+                    "fr": "LumiÃ¨re tungstÃ¨ne"
+                  },
+                  "short_labels": {
+                    "en": "Tung",
+                    "fr": "Tung"
+                  }
+                },
+                {
+                  "id": "fluorescent",
+                  "labels": {
+                    "en": "Fluorescent light",
+                    "fr": "LumiÃ¨re fluorescente"
+                  },
+                  "short_labels": {
+                    "en": "Fluor",
+                    "fr": "Fluor"
+                  }
+                },
+                {
+                  "id": "flash",
+                  "labels": {
+                    "en": "Flash",
+                    "fr": "Flash"
+                  },
+                  "short_labels": {
+                    "en": "Flash",
+                    "fr": "Flash"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "af",
+      "type": "tab",
+      "icon": "focus",
+      "labels": {
+        "en": "AF",
+        "fr": "AF"
+      },
+      "tab_index": 1,
+      "children": [
+        {
+          "id": "af_settings_1",
+          "type": "page",
+          "labels": {
+            "en": "AF 1",
+            "fr": "AF 1"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "af_operation_item",
+              "type": "setting",
+              "labels": {
+                "en": "AF operation",
+                "fr": "Fonctionnement AF"
+              },
+              "setting_id": "af_mode",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "one-shot-af",
+                  "labels": {
+                    "en": "One-Shot AF",
+                    "fr": "One-Shot AF"
+                  },
+                  "short_labels": {
+                    "en": "One-Shot",
+                    "fr": "One-Shot"
+                  }
+                },
+                {
+                  "id": "servo-af",
+                  "labels": {
+                    "en": "Servo AF",
+                    "fr": "Servo AF"
+                  },
+                  "short_labels": {
+                    "en": "Servo",
+                    "fr": "Servo"
+                  }
+                },
+                {
+                  "id": "mf",
+                  "labels": {
+                    "en": "Manual Focus",
+                    "fr": "Mise au point manuelle"
+                  },
+                  "short_labels": {
+                    "en": "MF",
+                    "fr": "MF"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "af_method_item",
+              "type": "setting",
+              "labels": {
+                "en": "AF method",
+                "fr": "MÃ©thode AF"
+              },
+              "setting_id": "af_area",
+              "item_index": 1,
+              "values": [
+                {
+                  "id": "face-tracking",
+                  "labels": {
+                    "en": "Face tracking + Tracking",
+                    "fr": "Suivi visage + Suivi"
+                  },
+                  "short_labels": {
+                    "en": "Face+Track",
+                    "fr": "Visage+Suivi"
+                  }
+                },
+                {
+                  "id": "whole-area",
+                  "labels": {
+                    "en": "Whole area AF",
+                    "fr": "AF zone entiÃ¨re"
+                  },
+                  "short_labels": {
+                    "en": "Whole",
+                    "fr": "EntiÃ¨re"
+                  }
+                },
+                {
+                  "id": "zone",
+                  "labels": {
+                    "en": "Zone AF",
+                    "fr": "AF zone"
+                  },
+                  "short_labels": {
+                    "en": "Zone",
+                    "fr": "Zone"
+                  }
+                },
+                {
+                  "id": "1-point",
+                  "labels": {
+                    "en": "1-point AF",
+                    "fr": "AF 1 point"
+                  },
+                  "short_labels": {
+                    "en": "1-Pt",
+                    "fr": "1-Pt"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "subject_detect_item",
+              "type": "setting",
+              "labels": {
+                "en": "Subject to detect",
+                "fr": "Sujet Ã  dÃ©tecter"
+              },
+              "setting_id": "subject_detection",
+              "item_index": 2,
+              "values": [
+                {
+                  "id": "people",
+                  "labels": {
+                    "en": "People",
+                    "fr": "Personnes"
+                  },
+                  "short_labels": {
+                    "en": "People",
+                    "fr": "Pers."
+                  }
+                },
+                {
+                  "id": "animals",
+                  "labels": {
+                    "en": "Animals",
+                    "fr": "Animaux"
+                  },
+                  "short_labels": {
+                    "en": "Animals",
+                    "fr": "Anim."
+                  }
+                },
+                {
+                  "id": "vehicles",
+                  "labels": {
+                    "en": "Vehicles",
+                    "fr": "VÃ©hicules"
+                  },
+                  "short_labels": {
+                    "en": "Vehicles",
+                    "fr": "VÃ©h."
+                  }
+                },
+                {
+                  "id": "none",
+                  "labels": {
+                    "en": "None",
+                    "fr": "Aucun"
+                  },
+                  "short_labels": {
+                    "en": "None",
+                    "fr": "Aucun"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exposure",
+      "type": "tab",
+      "icon": "exposure",
+      "labels": {
+        "en": "Exposure",
+        "fr": "Exposition"
+      },
+      "tab_index": 2,
+      "children": [
+        {
+          "id": "exposure_settings",
+          "type": "page",
+          "labels": {
+            "en": "Exposure",
+            "fr": "Exposition"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "exposure_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "Shooting mode",
+                "fr": "Mode de prise de vue"
+              },
+              "setting_id": "exposure_mode",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "p",
+                  "labels": {
+                    "en": "Program AE",
+                    "fr": "Programme AE"
+                  },
+                  "short_labels": {
+                    "en": "P",
+                    "fr": "P"
+                  }
+                },
+                {
+                  "id": "av",
+                  "labels": {
+                    "en": "Aperture priority AE",
+                    "fr": "PrioritÃ© ouverture AE"
+                  },
+                  "short_labels": {
+                    "en": "Av",
+                    "fr": "Av"
+                  }
+                },
+                {
+                  "id": "tv",
+                  "labels": {
+                    "en": "Shutter priority AE",
+                    "fr": "PrioritÃ© vitesse AE"
+                  },
+                  "short_labels": {
+                    "en": "Tv",
+                    "fr": "Tv"
+                  }
+                },
+                {
+                  "id": "m",
+                  "labels": {
+                    "en": "Manual exposure",
+                    "fr": "Exposition manuelle"
+                  },
+                  "short_labels": {
+                    "en": "M",
+                    "fr": "M"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "type": "tab",
+      "icon": "settings",
+      "labels": {
+        "en": "Set up",
+        "fr": "Configuration"
+      },
+      "tab_index": 3,
+      "children": [
+        {
+          "id": "setup_stabilization",
+          "type": "page",
+          "labels": {
+            "en": "IS",
+            "fr": "Stabilisation"
+          },
+          "page_index": 0,
+          "children": [
+            {
+              "id": "is_mode_item",
+              "type": "setting",
+              "labels": {
+                "en": "IS (Image Stabilizer) mode",
+                "fr": "Mode IS (Stabilisateur d'image)"
+              },
+              "setting_id": "stabilization",
+              "item_index": 0,
+              "values": [
+                {
+                  "id": "on",
+                  "labels": {
+                    "en": "On",
+                    "fr": "ActivÃ©"
+                  },
+                  "short_labels": {
+                    "en": "On",
+                    "fr": "On"
+                  }
+                },
+                {
+                  "id": "off",
+                  "labels": {
+                    "en": "Off",
+                    "fr": "DÃ©sactivÃ©"
+                  },
+                  "short_labels": {
+                    "en": "Off",
+                    "fr": "Off"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

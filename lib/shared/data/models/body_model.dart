@@ -95,7 +95,7 @@ class SensorSpecModel {
   @JsonKey(name: 'has_ibis')
   final bool hasIbis;
   @JsonKey(name: 'ibis_stops')
-  final double ibisStops;
+  final double? ibisStops;
   @JsonKey(name: 'sensor_width_mm')
   final double sensorWidthMm;
   @JsonKey(name: 'sensor_height_mm')
@@ -320,9 +320,9 @@ class StabilizationSpecModel {
   @JsonKey(name: 'has_ibis')
   final bool hasIbis;
   @JsonKey(name: 'ibis_stops')
-  final double ibisStops;
+  final double? ibisStops;
   @JsonKey(name: 'ibis_axes')
-  final int ibisAxes;
+  final int? ibisAxes;
 
   const StabilizationSpecModel({
     required this.hasIbis,

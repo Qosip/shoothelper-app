@@ -1,0 +1,32 @@
+{
+  "body_id": "nikon_z50ii",
+  "pack_version": "1.0.0",
+  "min_app_version": "1.0.0",
+  "files": {
+    "body.json": {
+      "path": "nikon_z50ii/body.json",
+      "size_bytes": 4285
+    },
+    "lenses/nikon_z_40_f2.json": {
+      "path": "nikon_z50ii/lenses/nikon_z_40_f2.json",
+      "size_bytes": 1072
+    },
+    "lenses/nikon_z_dx_16-50_f3.5-6.3_vr.json": {
+      "path": "nikon_z50ii/lenses/nikon_z_dx_16-50_f3.5-6.3_vr.json",
+      "size_bytes": 1407
+    },
+    "lenses/nikon_z_dx_50-250_f4.5-6.3_vr.json": {
+      "path": "nikon_z50ii/lenses/nikon_z_dx_50-250_f4.5-6.3_vr.json",
+      "size_bytes": 1419
+    },
+    "menu_tree.json": {
+      "path": "nikon_z50ii/menu_tree.json",
+      "size_bytes": 23082
+    },
+    "nav_paths.json": {
+      "path": "nikon_z50ii/nav_paths.json",
+      "size_bytes": 8930
+    }
+  },
+  "shared_files": {}
+}

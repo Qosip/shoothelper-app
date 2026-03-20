@@ -1,0 +1,119 @@
+{
+  "id": "canon_r50",
+  "brand_id": "canon",
+  "mount_id": "canon_rf",
+  "name": "Canon EOS R50",
+  "display_name": "EOS R50",
+  "sensor_size": "aps-c",
+  "crop_factor": 1.6,
+  "firmware_versions": ["1.0", "1.1"],
+  "current_firmware": "1.1",
+  "supported_languages": ["en", "fr"],
+  "release_year": 2023,
+
+  "spec": {
+    "sensor": {
+      "megapixels": 24.2,
+      "iso_range": { "min": 100, "max": 32000 },
+      "iso_extended_range": { "min": 100, "max": 51200 },
+      "iso_usable_max": 6400,
+      "dynamic_range_ev": 12.5,
+      "has_ibis": false,
+      "ibis_stops": null,
+      "sensor_width_mm": 22.3,
+      "sensor_height_mm": 14.9
+    },
+    "shutter": {
+      "mechanical_min_seconds": 0.00025,
+      "mechanical_max_seconds": 30.0,
+      "has_bulb": true,
+      "electronic_min_seconds": 0.0000625,
+      "electronic_max_seconds": 30.0,
+      "flash_sync_speed": "1/200"
+    },
+    "autofocus": {
+      "system": "dual_pixel_cmos_af_ii",
+      "points": 651,
+      "modes": ["one-shot-af", "servo-af", "mf"],
+      "areas": ["face-tracking", "whole-area", "zone", "1-point"],
+      "subject_detection": ["people", "animals", "vehicles"],
+      "has_eye_af": true,
+      "eye_af_modes": ["one-shot-af", "servo-af"],
+      "min_ev": -4.0,
+      "touch_af": true
+    },
+    "metering": {
+      "modes": ["evaluative", "partial", "center-weighted"]
+    },
+    "exposure": {
+      "modes": ["P", "Tv", "Av", "M", "SCN", "A+"],
+      "compensation_range": { "min": -3.0, "max": 3.0, "step": 0.3 },
+      "bracketing": {
+        "exposure_max_shots": 3,
+        "exposure_max_ev_step": 2.0,
+        "focus_bracket": false
+      }
+    },
+    "white_balance": {
+      "presets": ["auto", "daylight", "shade", "cloudy", "tungsten", "fluorescent", "flash"],
+      "custom_kelvin_min": 2500,
+      "custom_kelvin_max": 10000,
+      "custom_kelvin_step": 100,
+      "custom_slots": 1
+    },
+    "file_formats": {
+      "photo": ["raw", "craw", "jpeg", "raw+jpeg", "craw+jpeg"],
+      "raw_format": "CR3",
+      "jpeg_quality_levels": ["fine", "normal"],
+      "video": ["4k-30", "fhd-60"]
+    },
+    "stabilization": {
+      "has_ibis": false,
+      "ibis_stops": null,
+      "ibis_axes": null
+    },
+    "drive": {
+      "modes": ["single", "continuous-hi", "continuous-lo", "self-timer-10", "self-timer-2"],
+      "continuous_fps_hi": 15.0,
+      "continuous_fps_mid": 7.0,
+      "continuous_fps_lo": 3.0
+    }
+  },
+
+  "controls": {
+    "dials": [
+      {
+        "id": "main_dial",
+        "position": "top_right",
+        "label": { "en": "Main dial", "fr": "Molette principale" },
+        "default_function": {
+          "mode_M": "shutter_speed",
+          "mode_Av": "aperture",
+          "mode_Tv": "shutter_speed",
+          "mode_P": "program_shift"
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "id": "af_on",
+        "position": "rear_top",
+        "label": { "en": "AF/MF", "fr": "AF/MF" },
+        "default_function": "af_mf_toggle",
+        "customizable": false
+      },
+      {
+        "id": "q_set",
+        "position": "rear_center",
+        "label": { "en": "Q SET", "fr": "Q SET" },
+        "default_function": "quick_menu",
+        "customizable": false
+      }
+    ],
+    "fn_menu_items": [
+      "af_operation", "af_method", "drive_mode",
+      "iso_speed", "metering_mode", "white_balance",
+      "picture_style", "image_quality"
+    ]
+  }
+}

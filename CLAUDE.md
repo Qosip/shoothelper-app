@@ -37,7 +37,7 @@ Les plus importants pour le code :
 - 19_MENU_NAVIGATION_MAPPER.md → Killer feature
 
 ## Phase actuelle
-Phase 6 : Data entry supplémentaire
+Phase 7 : Tests & Release
 
 ## Ce qui est fait
 - ☑ Phase 0 : Bootstrap
@@ -46,7 +46,7 @@ Phase 6 : Data entry supplémentaire
 - ☑ Phase 3 : Flow principal UI — 119 tests passent
 - ☑ Phase 4 : Onboarding & Download — 133 tests passent
 - ☑ Phase 5 : Error handling & polish — 181 tests passent
-- ☐ Phase 6 : Data entry supplémentaire
+- ☑ Phase 6 : Data entry supplémentaire — 205 tests passent
 - ☐ Phase 7 : Tests & Release
 
 

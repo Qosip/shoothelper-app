@@ -1,0 +1,56 @@
+{
+  "id": "canon_rf-s_18-45_f4.5-6.3_is_stm",
+  "brand_id": "canon",
+  "mount_id": "canon_rf",
+  "name": "Canon RF-S 18-45mm f/4.5-6.3 IS STM",
+  "display_name": "RF-S 18-45mm f/4.5-6.3",
+  "type": "zoom",
+  "designed_for": "aps-c",
+
+  "spec": {
+    "focal_length": {
+      "type": "zoom",
+      "min_mm": 18,
+      "max_mm": 45
+    },
+    "aperture": {
+      "type": "variable",
+      "max_aperture": 4.5,
+      "min_aperture": 32,
+      "variable_aperture_map": [
+        { "focal_mm": 18, "max_aperture": 4.5 },
+        { "focal_mm": 24, "max_aperture": 5.0 },
+        { "focal_mm": 35, "max_aperture": 5.6 },
+        { "focal_mm": 45, "max_aperture": 6.3 }
+      ]
+    },
+    "focus": {
+      "min_focus_distance_m": 0.15,
+      "min_focus_distance_at_focal_mm": 18,
+      "min_focus_distance_map": [
+        { "focal_mm": 18, "distance_m": 0.15 },
+        { "focal_mm": 45, "distance_m": 0.32 }
+      ],
+      "autofocus": true,
+      "af_motor": "stm",
+      "manual_override": true,
+      "internal_focus": false
+    },
+    "stabilization": {
+      "has_ois": true,
+      "ois_stops": 4.0
+    },
+    "optical": {
+      "elements": 7,
+      "groups": 7,
+      "filter_diameter_mm": 49,
+      "max_magnification": 0.17,
+      "angle_of_view_diagonal_deg": { "wide": 74.3, "tele": 34.4 }
+    },
+    "physical": {
+      "weight_g": 130,
+      "length_mm": 44.3,
+      "diameter_mm": 69.2
+    }
+  }
+}

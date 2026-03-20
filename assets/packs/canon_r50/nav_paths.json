@@ -1,0 +1,216 @@
+[
+  {
+    "body_id": "canon_r50",
+    "setting_id": "af_mode",
+    "firmware_version": "1.1",
+    "menu_path": ["af", "af_settings_1", "af_operation_item"],
+    "menu_item_id": "af_operation_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "af_operation", "labels": { "en": "Select AF operation", "fr": "Sélectionner Fonctionnement AF" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "One-Shot AF is best for still subjects. Servo AF tracks moving subjects.", "fr": "One-Shot AF est idéal pour les sujets immobiles. Servo AF suit les sujets en mouvement." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "af_area",
+    "firmware_version": "1.1",
+    "menu_path": ["af", "af_settings_1", "af_method_item"],
+    "menu_item_id": "af_method_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "af_method", "labels": { "en": "Select AF method", "fr": "Sélectionner Méthode AF" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Face tracking + Tracking is the most versatile mode for portraits.", "fr": "Suivi visage + Suivi est le mode le plus polyvalent pour le portrait." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "aperture",
+    "firmware_version": "1.1",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "Av"],
+      "dial_id": "main_dial",
+      "labels": { "en": "In Av or M mode, turn the main dial to change aperture.", "fr": "En mode Av ou M, tourne la molette principale pour changer l'ouverture." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "In M mode, hold the Av button and turn the dial to change aperture.", "fr": "En mode M, maintiens le bouton Av et tourne la molette pour changer l'ouverture." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "shutter_speed",
+    "firmware_version": "1.1",
+    "menu_path": null,
+    "menu_item_id": null,
+    "quick_access": null,
+    "dial_access": {
+      "exposure_modes": ["M", "Tv"],
+      "dial_id": "main_dial",
+      "labels": { "en": "In Tv or M mode, turn the main dial to change shutter speed.", "fr": "En mode Tv ou M, tourne la molette principale pour changer la vitesse." }
+    },
+    "tips": [
+      {
+        "labels": { "en": "The R50 has only one dial. In M mode, use the Av button to toggle between aperture and shutter speed.", "fr": "Le R50 n'a qu'une seule molette. En mode M, utilise le bouton Av pour alterner entre ouverture et vitesse." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "iso",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_2", "iso_speed_item"],
+    "menu_item_id": "iso_speed_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "iso_speed", "labels": { "en": "Select ISO speed", "fr": "Sélectionner Vitesse ISO" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Auto ISO works well in P, Av, and Tv modes. Set it manually in M mode for full control.", "fr": "L'ISO auto fonctionne bien en mode P, Av et Tv. Règle-le manuellement en mode M pour un contrôle total." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "exposure_mode",
+    "firmware_version": "1.1",
+    "menu_path": ["exposure", "exposure_settings", "exposure_mode_item"],
+    "menu_item_id": "exposure_mode_item",
+    "quick_access": null,
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "The R50 doesn't have a mode dial. Change shooting mode via the touchscreen or Q menu.", "fr": "Le R50 n'a pas de molette de mode. Change le mode de prise de vue via l'écran tactile ou le menu Q." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "metering",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_2", "metering_mode_item"],
+    "menu_item_id": "metering_mode_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "metering_mode", "labels": { "en": "Select Metering mode", "fr": "Sélectionner Mode de mesure" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": []
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "white_balance",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_2", "white_balance_item"],
+    "menu_item_id": "white_balance_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "white_balance", "labels": { "en": "Select White balance", "fr": "Sélectionner Balance des blancs" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Auto White Balance handles most situations well. Use presets for creative control.", "fr": "La Balance des blancs auto gère bien la plupart des situations. Utilise les préréglages pour un contrôle créatif." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "drive",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_1", "drive_mode_item"],
+    "menu_item_id": "drive_mode_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "drive_mode", "labels": { "en": "Select Drive mode", "fr": "Sélectionner Mode d'acquisition" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "High-speed continuous shoots at 15fps with electronic shutter.", "fr": "La rafale haute vitesse atteint 15 i/s avec l'obturateur électronique." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "stabilization",
+    "firmware_version": "1.1",
+    "menu_path": ["setup", "setup_stabilization", "is_mode_item"],
+    "menu_item_id": "is_mode_item",
+    "quick_access": null,
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "The R50 has no in-body stabilization. IS depends on your lens. RF-S 18-45mm has optical IS.", "fr": "Le R50 n'a pas de stabilisation intégrée. La stabilisation dépend de ton objectif. Le RF-S 18-45mm a un IS optique." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "file_format",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_1", "image_quality_item"],
+    "menu_item_id": "image_quality_item",
+    "quick_access": {
+      "method": "q_menu",
+      "steps": [
+        { "action": "press", "target": "q_set_button", "labels": { "en": "Press Q SET", "fr": "Appuyer sur Q SET" } },
+        { "action": "navigate", "target": "image_quality", "labels": { "en": "Select Image quality", "fr": "Sélectionner Qualité d'image" } }
+      ]
+    },
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "CRAW (Compact RAW) is a smaller RAW file with nearly identical quality.", "fr": "CRAW (RAW compact) est un fichier RAW plus petit avec une qualité quasi identique." }
+      }
+    ]
+  },
+  {
+    "body_id": "canon_r50",
+    "setting_id": "exposure_compensation",
+    "firmware_version": "1.1",
+    "menu_path": ["shooting", "shoot_settings_2", "exposure_comp_item"],
+    "menu_item_id": "exposure_comp_item",
+    "quick_access": null,
+    "dial_access": null,
+    "tips": [
+      {
+        "labels": { "en": "Use the touchscreen to adjust exposure compensation quickly.", "fr": "Utilise l'écran tactile pour ajuster la correction d'exposition rapidement." }
+      }
+    ]
+  }
+]

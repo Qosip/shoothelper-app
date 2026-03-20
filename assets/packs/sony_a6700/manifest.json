@@ -5,33 +5,20 @@
   "files": {
     "body.json": {
       "path": "sony_a6700/body.json",
-      "size_bytes": 3200
-    },
-    "menu_tree.json": {
-      "path": "sony_a6700/menu_tree.json",
-      "size_bytes": 18500
-    },
-    "nav_paths.json": {
-      "path": "sony_a6700/nav_paths.json",
-      "size_bytes": 8200
+      "size_bytes": 4182
     },
     "lenses/sigma_18-50_f2.8.json": {
       "path": "sony_a6700/lenses/sigma_18-50_f2.8.json",
-      "size_bytes": 1800
+      "size_bytes": 1205
+    },
+    "menu_tree.json": {
+      "path": "sony_a6700/menu_tree.json",
+      "size_bytes": 11265
+    },
+    "nav_paths.json": {
+      "path": "sony_a6700/nav_paths.json",
+      "size_bytes": 9998
     }
   },
-  "shared_files": {
-    "setting_defs.json": {
-      "path": "shared/setting_defs.json",
-      "size_bytes": 2400
-    },
-    "brands.json": {
-      "path": "shared/brands.json",
-      "size_bytes": 800
-    },
-    "mounts.json": {
-      "path": "shared/mounts.json",
-      "size_bytes": 600
-    }
-  }
+  "shared_files": {}
 }

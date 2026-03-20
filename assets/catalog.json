@@ -1,23 +1,106 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "bodies": [
+    {
+      "id": "canon_r50",
+      "brand_id": "canon",
+      "name": "Canon EOS R50",
+      "display_name": "EOS R50",
+      "sensor_size": "aps-c",
+      "mount": "canon_rf",
+      "pack_version": "1.0.0",
+      "pack_size_bytes": 37068,
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "lenses": [
+        {
+          "id": "canon_rf-s_18-45_f4.5-6.3_is_stm",
+          "brand_id": "canon",
+          "name": "Canon RF-S 18-45mm f/4.5-6.3 IS STM",
+          "display_name": "RF-S 18-45mm f/4.5-6.3",
+          "is_kit_lens": true,
+          "popularity_rank": 1
+        },
+        {
+          "id": "canon_rf-s_55-210_f5-7.1_is_stm",
+          "brand_id": "canon",
+          "name": "Canon RF-S 55-210mm f/5-7.1 IS STM",
+          "display_name": "RF-S 55-210mm f/5-7.1",
+          "is_kit_lens": false,
+          "popularity_rank": 2
+        },
+        {
+          "id": "canon_rf_50_f1.8_stm",
+          "brand_id": "canon",
+          "name": "Canon RF 50mm f/1.8 STM",
+          "display_name": "RF 50mm f/1.8",
+          "is_kit_lens": false,
+          "popularity_rank": 3
+        }
+      ]
+    },
+    {
+      "id": "nikon_z50ii",
+      "brand_id": "nikon",
+      "name": "Nikon Z50 II",
+      "display_name": "Z50 II",
+      "sensor_size": "aps-c",
+      "mount": "nikon_z",
+      "pack_version": "1.0.0",
+      "pack_size_bytes": 40195,
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "lenses": [
+        {
+          "id": "nikon_z_40_f2",
+          "brand_id": "nikon",
+          "name": "Nikon NIKKOR Z 40mm f/2",
+          "display_name": "Z 40mm f/2",
+          "is_kit_lens": true,
+          "popularity_rank": 1
+        },
+        {
+          "id": "nikon_z_dx_16-50_f3.5-6.3_vr",
+          "brand_id": "nikon",
+          "name": "Nikon NIKKOR Z DX 16-50mm f/3.5-6.3 VR",
+          "display_name": "Z DX 16-50mm f/3.5-6.3 VR",
+          "is_kit_lens": false,
+          "popularity_rank": 2
+        },
+        {
+          "id": "nikon_z_dx_50-250_f4.5-6.3_vr",
+          "brand_id": "nikon",
+          "name": "Nikon NIKKOR Z DX 50-250mm f/4.5-6.3 VR",
+          "display_name": "Z DX 50-250mm f/4.5-6.3 VR",
+          "is_kit_lens": false,
+          "popularity_rank": 3
+        }
+      ]
+    },
     {
       "id": "sony_a6700",
       "brand_id": "sony",
       "name": "Sony A6700",
-      "display_name": "Sony α6700",
+      "display_name": "A6700",
       "sensor_size": "aps-c",
       "mount": "sony_e",
       "pack_version": "1.0.0",
-      "pack_size_bytes": 52000,
-      "languages": ["fr", "en"],
+      "pack_size_bytes": 26650,
+      "languages": [
+        "en",
+        "fr"
+      ],
       "lenses": [
         {
           "id": "sigma_18-50_f2.8_dc_dn_c",
           "brand_id": "sigma",
-          "name": "Sigma 18-50mm f/2.8 DC DN | C",
+          "name": "Sigma 18-50mm f/2.8 DC DN | Contemporary",
           "display_name": "Sigma 18-50mm f/2.8",
-          "is_kit_lens": false,
+          "is_kit_lens": true,
           "popularity_rank": 1
         }
       ]

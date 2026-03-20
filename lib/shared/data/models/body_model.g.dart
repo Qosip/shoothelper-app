@@ -94,7 +94,7 @@ SensorSpecModel _$SensorSpecModelFromJson(Map<String, dynamic> json) =>
       isoUsableMax: (json['iso_usable_max'] as num).toInt(),
       dynamicRangeEv: (json['dynamic_range_ev'] as num).toDouble(),
       hasIbis: json['has_ibis'] as bool,
-      ibisStops: (json['ibis_stops'] as num).toDouble(),
+      ibisStops: (json['ibis_stops'] as num?)?.toDouble(),
       sensorWidthMm: (json['sensor_width_mm'] as num).toDouble(),
       sensorHeightMm: (json['sensor_height_mm'] as num).toDouble(),
     );
@@ -272,8 +272,8 @@ StabilizationSpecModel _$StabilizationSpecModelFromJson(
   Map<String, dynamic> json,
 ) => StabilizationSpecModel(
   hasIbis: json['has_ibis'] as bool,
-  ibisStops: (json['ibis_stops'] as num).toDouble(),
-  ibisAxes: (json['ibis_axes'] as num).toInt(),
+  ibisStops: (json['ibis_stops'] as num?)?.toDouble(),
+  ibisAxes: (json['ibis_axes'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$StabilizationSpecModelToJson(

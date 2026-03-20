@@ -1,0 +1,32 @@
+{
+  "body_id": "canon_r50",
+  "pack_version": "1.0.0",
+  "min_app_version": "1.0.0",
+  "files": {
+    "body.json": {
+      "path": "canon_r50/body.json",
+      "size_bytes": 3381
+    },
+    "lenses/canon_rf-s_18-45_f4.5-6.3_is_stm.json": {
+      "path": "canon_r50/lenses/canon_rf-s_18-45_f4.5-6.3_is_stm.json",
+      "size_bytes": 1403
+    },
+    "lenses/canon_rf-s_55-210_f5-7.1_is_stm.json": {
+      "path": "canon_r50/lenses/canon_rf-s_55-210_f5-7.1_is_stm.json",
+      "size_bytes": 1406
+    },
+    "lenses/canon_rf_50_f1.8_stm.json": {
+      "path": "canon_r50/lenses/canon_rf_50_f1.8_stm.json",
+      "size_bytes": 1079
+    },
+    "menu_tree.json": {
+      "path": "canon_r50/menu_tree.json",
+      "size_bytes": 21405
+    },
+    "nav_paths.json": {
+      "path": "canon_r50/nav_paths.json",
+      "size_bytes": 8394
+    }
+  },
+  "shared_files": {}
+}
