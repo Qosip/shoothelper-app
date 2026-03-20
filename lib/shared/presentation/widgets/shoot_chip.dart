@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show HapticFeedback;
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
@@ -52,7 +53,12 @@ class ShootChip extends StatelessWidget {
                 : AppColors.lightDivider;
 
     return GestureDetector(
-      onTap: isDisabled ? null : onTap,
+      onTap: isDisabled
+          ? null
+          : () {
+              HapticFeedback.selectionClick();
+              onTap?.call();
+            },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,

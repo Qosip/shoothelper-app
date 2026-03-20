@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -160,6 +161,7 @@ class SceneInputScreen extends ConsumerWidget {
               child: FilledButton(
                 onPressed: draft.isLevel1Complete
                     ? () {
+                        HapticFeedback.mediumImpact();
                         ref.read(submittedSceneProvider.notifier).state =
                             draft.toSceneInput();
                         context.go('/results');

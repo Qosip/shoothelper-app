@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:lucide_icons/lucide_icons.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -26,7 +27,12 @@ class ExpandToggle extends StatelessWidget {
     final textColor = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap != null
+          ? () {
+              HapticFeedback.selectionClick();
+              onTap!();
+            }
+          : null,
       behavior: HitTestBehavior.opaque,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),

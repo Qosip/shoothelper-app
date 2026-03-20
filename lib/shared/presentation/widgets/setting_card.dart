@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -17,6 +18,8 @@ class SettingCard extends StatelessWidget {
   final IconData? icon;
   final SettingCardVariant variant;
   final VoidCallback? onTap;
+  /// Hero tag for shared element transition to detail screen.
+  final String? heroTag;
 
   const SettingCard({
     super.key,
@@ -26,7 +29,21 @@ class SettingCard extends StatelessWidget {
     this.icon,
     this.variant = SettingCardVariant.normal,
     this.onTap,
+    this.heroTag,
   });
+
+  static Widget _maybeHero({String? tag, required Widget child}) {
+    if (tag == null) return child;
+    return Hero(
+      tag: tag,
+      flightShuttleBuilder: (_, animation, direction, fromContext, toContext) =>
+          DefaultTextStyle(
+        style: DefaultTextStyle.of(toContext).style,
+        child: toContext.widget,
+      ),
+      child: Material(color: Colors.transparent, child: child),
+    );
+  }
 
   /// Map setting IDs to appropriate icons.
   static IconData iconForSetting(String settingId) {
@@ -56,7 +73,12 @@ class SettingCard extends StatelessWidget {
     };
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap != null
+          ? () {
+              HapticFeedback.selectionClick();
+              onTap!();
+            }
+          : null,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.cardPadding),
         decoration: BoxDecoration(
@@ -108,13 +130,16 @@ class SettingCard extends StatelessWidget {
             ),
             const SizedBox(width: AppSpacing.sm),
 
-            // Value
-            Text(
-              valueDisplay,
-              style: AppTypography.value.copyWith(
-                color: isDark
-                    ? AppColors.darkTextPrimary
-                    : AppColors.lightTextPrimary,
+            // Value (Hero shared element for transition to detail)
+            _maybeHero(
+              tag: heroTag,
+              child: Text(
+                valueDisplay,
+                style: AppTypography.value.copyWith(
+                  color: isDark
+                      ? AppColors.darkTextPrimary
+                      : AppColors.lightTextPrimary,
+                ),
               ),
             ),
             const SizedBox(width: AppSpacing.sm),

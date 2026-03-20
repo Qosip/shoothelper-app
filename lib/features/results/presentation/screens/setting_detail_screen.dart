@@ -104,12 +104,24 @@ class _DetailContent extends ConsumerWidget {
                 color: AppColors.blueOptique,
               ),
               const SizedBox(height: AppSpacing.md),
-              Text(
-                setting.valueDisplay,
-                style: AppTypography.display.copyWith(
-                  color: isDark
-                      ? AppColors.darkTextPrimary
-                      : AppColors.lightTextPrimary,
+              Hero(
+                tag: 'setting_value_$settingId',
+                flightShuttleBuilder:
+                    (_, animation, direction, fromContext, toContext) =>
+                        DefaultTextStyle(
+                  style: DefaultTextStyle.of(toContext).style,
+                  child: toContext.widget,
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: Text(
+                    setting.valueDisplay,
+                    style: AppTypography.display.copyWith(
+                      color: isDark
+                          ? AppColors.darkTextPrimary
+                          : AppColors.lightTextPrimary,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: AppSpacing.sm),

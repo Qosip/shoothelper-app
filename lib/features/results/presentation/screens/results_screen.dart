@@ -107,6 +107,7 @@ class _ResultsContent extends StatelessWidget {
                 explanation: s.explanationShort,
                 valueDisplay: s.valueDisplay,
                 icon: SettingCard.iconForSetting(s.settingId),
+                heroTag: 'setting_value_${s.settingId}',
                 variant: s.isCompromised
                     ? SettingCardVariant.compromised
                     : SettingCardVariant.normal,

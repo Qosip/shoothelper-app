@@ -11,6 +11,7 @@ import '../../../../shared/presentation/theme/app_spacing.dart';
 import '../../../../shared/presentation/theme/app_typography.dart';
 import '../../../../shared/presentation/widgets/error_display.dart';
 import '../../../../shared/presentation/widgets/nav_step_card.dart';
+import '../../../../shared/presentation/widgets/staggered_list.dart';
 import '../../domain/use_cases/resolve_menu_path.dart';
 
 class MenuNavigationScreen extends ConsumerWidget {
@@ -131,8 +132,7 @@ class _MenuNavContent extends StatelessWidget {
             icon: LucideIcons.zap,
             title: display.quickAccessSection!.title,
             isDark: isDark,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: StaggeredList(
               children: display.quickAccessSection!.steps
                   .asMap()
                   .entries
@@ -154,8 +154,7 @@ class _MenuNavContent extends StatelessWidget {
             icon: LucideIcons.menu,
             title: display.fullMenuSection!.title,
             isDark: isDark,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: StaggeredList(
               children: [
                 NavStepCard(
                   stepNumber: 0,
