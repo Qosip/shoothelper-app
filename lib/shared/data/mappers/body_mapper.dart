@@ -12,6 +12,7 @@ class BodyMapper {
       displayName: model.displayName,
       sensorSize: _parseSensorSize(model.sensorSize),
       cropFactor: model.cropFactor,
+      supportLevel: _parseSupportLevel(model.supportLevel),
       sensor: _mapSensor(model.spec.sensor),
       shutter: _mapShutter(model.spec.shutter),
       autofocus: _mapAutofocus(model.spec.autofocus),
@@ -21,6 +22,10 @@ class BodyMapper {
       drive: _mapDrive(model.spec.drive),
       photoFormats: model.spec.fileFormats.photo,
     );
+  }
+
+  static SupportLevel _parseSupportLevel(String value) {
+    return value == 'basic' ? SupportLevel.basic : SupportLevel.full;
   }
 
   static SensorSize _parseSensorSize(String value) {

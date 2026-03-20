@@ -65,10 +65,36 @@ class BodySelectionScreen extends ConsumerWidget {
                               crossAxisAlignment:
                                   CrossAxisAlignment.start,
                               children: [
-                                Text(body.displayName,
-                                    style: theme.textTheme.titleMedium),
+                                Row(
+                                  children: [
+                                    Text(body.displayName,
+                                        style: theme.textTheme.titleMedium),
+                                    if (body.isFullSupport) ...[
+                                      const SizedBox(width: 6),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 6,
+                                          vertical: 2,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: theme.colorScheme.primary.withValues(alpha: 0.12),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Text(
+                                          'Full',
+                                          style: theme.textTheme.labelSmall?.copyWith(
+                                            color: theme.colorScheme.primary,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ),
                                 Text(
-                                  '${_sensorLabel(body.sensorSize)} · ${body.lenses.length} objectif(s)',
+                                  body.isFullSupport
+                                      ? '${_sensorLabel(body.sensorSize)} · ${body.lenses.length} objectif(s) · Navigation menu'
+                                      : '${_sensorLabel(body.sensorSize)} · Réglages uniquement',
                                   style: theme.textTheme.bodySmall
                                       ?.copyWith(
                                           color: theme.colorScheme

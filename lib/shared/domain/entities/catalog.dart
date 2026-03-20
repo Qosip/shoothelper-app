@@ -10,6 +10,7 @@ class CatalogBody {
   final int packSizeBytes;
   final List<String> languages;
   final List<CatalogLens> lenses;
+  final String supportLevel; // "full" or "basic"
 
   const CatalogBody({
     required this.id,
@@ -22,7 +23,11 @@ class CatalogBody {
     required this.packSizeBytes,
     required this.languages,
     required this.lenses,
+    this.supportLevel = 'full',
   });
+
+  bool get isFullSupport => supportLevel == 'full';
+  bool get isBasicSupport => supportLevel == 'basic';
 
   factory CatalogBody.fromJson(Map<String, dynamic> json) {
     return CatalogBody(
@@ -38,6 +43,7 @@ class CatalogBody {
       lenses: (json['lenses'] as List)
           .map((l) => CatalogLens.fromJson(l as Map<String, dynamic>))
           .toList(),
+      supportLevel: json['support_level'] as String? ?? 'full',
     );
   }
 }

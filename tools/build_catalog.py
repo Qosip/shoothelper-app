@@ -55,6 +55,7 @@ def build_catalog():
             "sensor_size": body["sensor_size"],
             "mount": body["mount_id"],
             "pack_version": "1.0.0",
+            "support_level": body.get("support_level", "full"),
             "pack_size_bytes": pack_size,
             "languages": body.get("supported_languages", ["en"]),
             "lenses": lenses,

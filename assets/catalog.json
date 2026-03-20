@@ -9,6 +9,7 @@
       "sensor_size": "aps-c",
       "mount": "canon_rf",
       "pack_version": "1.0.0",
+      "support_level": "full",
       "pack_size_bytes": 37068,
       "languages": [
         "en",
@@ -49,6 +50,7 @@
       "sensor_size": "aps-c",
       "mount": "nikon_z",
       "pack_version": "1.0.0",
+      "support_level": "full",
       "pack_size_bytes": 40195,
       "languages": [
         "en",
@@ -89,6 +91,7 @@
       "sensor_size": "aps-c",
       "mount": "sony_e",
       "pack_version": "1.0.0",
+      "support_level": "full",
       "pack_size_bytes": 26650,
       "languages": [
         "en",

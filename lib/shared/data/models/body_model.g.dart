@@ -22,6 +22,7 @@ BodyModel _$BodyModelFromJson(Map<String, dynamic> json) => BodyModel(
       .map((e) => e as String)
       .toList(),
   releaseYear: (json['release_year'] as num).toInt(),
+  supportLevel: json['support_level'] as String? ?? 'full',
   spec: BodySpecModel.fromJson(json['spec'] as Map<String, dynamic>),
   controls: ControlsModel.fromJson(json['controls'] as Map<String, dynamic>),
 );
@@ -38,6 +39,7 @@ Map<String, dynamic> _$BodyModelToJson(BodyModel instance) => <String, dynamic>{
   'current_firmware': instance.currentFirmware,
   'supported_languages': instance.supportedLanguages,
   'release_year': instance.releaseYear,
+  'support_level': instance.supportLevel,
   'spec': instance.spec,
   'controls': instance.controls,
 };

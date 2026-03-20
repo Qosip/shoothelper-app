@@ -2,6 +2,9 @@ import '../enums/shooting_enums.dart';
 
 /// Camera body specifications used by the Settings Engine.
 /// Skill 04 §3.4 BodySpec — simplified for engine calculations.
+/// Support level: "full" has menu trees + nav paths, "basic" has specs only.
+enum SupportLevel { full, basic }
+
 class BodySpec {
   final String id;
   final String brandId;
@@ -9,6 +12,7 @@ class BodySpec {
   final String displayName;
   final SensorSize sensorSize;
   final double cropFactor;
+  final SupportLevel supportLevel;
 
   final SensorSpec sensor;
   final ShutterSpec shutter;
@@ -26,6 +30,7 @@ class BodySpec {
     required this.displayName,
     required this.sensorSize,
     required this.cropFactor,
+    this.supportLevel = SupportLevel.full,
     required this.sensor,
     required this.shutter,
     required this.autofocus,
@@ -35,6 +40,9 @@ class BodySpec {
     required this.drive,
     required this.photoFormats,
   });
+
+  bool get isFullSupport => supportLevel == SupportLevel.full;
+  bool get isBasicSupport => supportLevel == SupportLevel.basic;
 }
 
 class SensorSpec {

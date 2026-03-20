@@ -10,6 +10,7 @@
   "current_firmware": "1.1",
   "supported_languages": ["en", "fr"],
   "release_year": 2023,
+  "support_level": "full",
 
   "spec": {
     "sensor": {

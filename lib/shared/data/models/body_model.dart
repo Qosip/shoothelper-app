@@ -24,6 +24,8 @@ class BodyModel {
   final List<String> supportedLanguages;
   @JsonKey(name: 'release_year')
   final int releaseYear;
+  @JsonKey(name: 'support_level', defaultValue: 'full')
+  final String supportLevel;
   final BodySpecModel spec;
   final ControlsModel controls;
 
@@ -39,6 +41,7 @@ class BodyModel {
     required this.currentFirmware,
     required this.supportedLanguages,
     required this.releaseYear,
+    this.supportLevel = 'full',
     required this.spec,
     required this.controls,
   });
